@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Job -->
+	
+	<!-- this is an example -->
+	<bean id="frameworkJobRunningCleanerJob" class="it.quix.framework.core.job.FrameworkJobRunningCleanerJob">
+		<property name="name" value="FrameworkJobRunningCleanerJob"/>
+		<property name="cronExpression" value="* * * * * ? 2099" />
+		<property name="recoveryYN" value="true"/>
+		<property name="statefulYN" value="true"/>
+		<property name="defaultParameterMap">
+			<map>
+				<entry key="ErrorMailToList">
+					<list>
+						<value>giovanni.gilli@quix.it</value>
+					</list>
+				</entry>
+				<entry key="NrHourBeforeProcessing" value="24" />
+			</map>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,29 @@
+.dropdown-scrollable {
+	height:auto;
+	max-height:150px;
+	overflow-x:hidden;
+}
+.dropdown-scrollable li {
+	font-size:90%;
+}
+.cron-picker {
+	margin-top:10px;
+}
+.cron-picker div.btn-group {
+	margin:0 3px;
+}
+.clickable {
+	cursor:pointer;
+}
+.pick-required {
+	border-color:#d58512;
+}
+.pick-error {
+	border-color:#ac2925;
+}
+.pick-not-required {
+	border-color:#269abc;
+}
+.pick-ok {
+	border-color:#398439;
+}

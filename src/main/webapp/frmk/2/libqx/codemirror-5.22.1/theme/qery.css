@@ -1,0 +1,30 @@
+
+.CodeMirror pre {
+	color: #999;	
+}
+
+.cm-s-mdn-like .cm-keyword {
+    color: #27ae60;
+}
+
+.cm-s-mdn-like .cm-string {
+    color: #0044cc;
+    font-style: italic;
+}
+
+.cm-s-mdn-like .cm-comment {
+    color: #ccc;
+    font-weight: normal;
+}
+
+.codeMirrorAutocompleteInputParameter {
+	color: #a94442;
+}
+
+.codeMirrorAutocompleteVariable {
+	color: #0044cc;
+}
+
+.codeMirrorAutocompletekeywords {
+	color: #27ae60;
+}

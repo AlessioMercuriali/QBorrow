@@ -1,0 +1,35 @@
+<Context path="qborrow">
+
+        <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+            validationQuery="select 1" maxActive="100" maxIdle="30"
+            maxWait="10000" name="jdbc/qborrow"  type="javax.sql.DataSource"
+            url="jdbc:mysql://127.0.0.1/qborrow"
+            username="mysql"
+            password="mysql"
+            />
+
+        <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+            validationQuery="select 1" maxActive="100" maxIdle="30"
+            maxWait="10000" name="jdbc/framework"  type="javax.sql.DataSource"
+            url="jdbc:mysql://127.0.0.1/framework"
+            username="mysql"
+            password="mysql"
+            />
+
+        <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+            validationQuery="select 1" maxActive="100" maxIdle="30"
+            maxWait="10000" name="jdbc/puma"  type="javax.sql.DataSource"
+            url="jdbc:mysql://127.0.0.1/puma"
+            username="mysql"
+            password="mysql"
+            />
+
+        <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+             validationQuery="select 1" maxActive="100" maxIdle="30"
+             maxWait="10000" name="jdbc/commons"  type="javax.sql.DataSource"
+             url="jdbc:mysql://127.0.0.1/puma"
+             username="mysql"
+             password="mysql"
+             />
+
+</Context>

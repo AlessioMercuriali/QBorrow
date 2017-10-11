@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- ****************** -->
+	<!-- file included -->
+	<!-- ****************** -->
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<import resource="classpath:qborrow-ds-spring.xml" />
+	<import resource="classpath:qborrow-dao-spring.xml" />
+	<import resource="classpath:qborrow-validator-spring.xml" />
+	<import resource="classpath:qborrow-config-spring.xml" />
+	<import resource="classpath:qborrow-frmk-custom-spring.xml" />
+
+	<!-- ****************** -->
+	<!-- Aspects -->
+	<!-- ****************** -->
+	<bean id="userContextAspect" class="it.quix.framework.core.aspect.UserContextAspect">
+		<property name="order" value="1" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" order="2" proxy-target-class="true" />
+
+
+	<!-- ****************** -->
+	<!-- jdbc spring -->
+	<!-- ****************** -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<property name="dataSource" ref="qborrowDataSource" />
+  	</bean>
+
+
+	<!-- ****************** -->
+	<!-- beans application -->
+	<!-- ****************** -->
+	<bean id="userContext" class="it.quix.academy.qborrow.core.model.QborrowUserContext" scope="prototype">
+	</bean>
+	<bean id="userContextFactory" class="it.quix.framework.core.model.UserContextFactory">
+		<property name="userContextClass" value="it.quix.academy.qborrow.core.model.QborrowUserContext" />
+	</bean>
+	<bean id="validatorFactory" class="it.quix.academy.qborrow.core.validation.ValidatorFactory" />
+	<bean id="constraintFactory" class="it.quix.framework.core.validation.ConstraintFactoryImpl" />
+	<bean id="qborrowManager" class="it.quix.academy.qborrow.core.manager.QborrowManager" />
+	
+<!--	<bean id="oggettiHandler" class="it.quix.academy.qborrow.core.handler.OggettiHandler" /> -->
+	
+<!--	<bean id="prestitiHandler" class="it.quix.academy.qborrow.core.handler.PrestitiHandler" /> -->
+	
+<!--	<bean id="soggettiHandler" class="it.quix.academy.qborrow.core.handler.SoggettiHandler" /> -->
+	
+	
+</beans>

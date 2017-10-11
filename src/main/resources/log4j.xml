@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "./dtd/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${logDir}/qborrow.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2000KB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %c - %m%n" />
+		</layout>
+	</appender>
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %c - %m%n" />
+		</layout>
+	</appender>
+	<appender name="N1" class="org.apache.log4j.performance.NullAppender" />
+
+	<!-- **************************** -->
+	<!-- categories -->
+	<category name="it.quix.academy.qborrow" additivity="false">
+		<priority value="trace" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender" />
+	</category>
+	<category name="it.quix.framework" additivity="false">
+		<priority value="trace" />
+		<appender-ref ref="consoleAppender" />
+	</category>
+	<category name="com.opensymphony.xwork2.ognl.OgnlValueStack" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="consoleAppender" />
+	</category>
+	<category name="org.apache.struts2.util.TextProviderHelper" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="consoleAppender" />
+	</category>
+	<root>
+		<priority value="error" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender" />
+	</root>
+</log4j:configuration>

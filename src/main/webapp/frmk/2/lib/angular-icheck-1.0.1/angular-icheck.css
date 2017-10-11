@@ -1,0 +1,18 @@
+
+.angular-icheck {
+  overflow: hidden;
+}
+.angular-icheck .checkbox {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url("skins/flat/flat.png") no-repeat left;
+}
+.angular-icheck .checkbox.checked {
+  background-position: -22px 0;
+}
+.angular-icheck .label {
+  display: inline-block;
+  vertical-align: middle;
+}

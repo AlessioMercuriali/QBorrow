@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+		"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="qborrow" extends="quix-default">
+		<interceptors>
+			<!-- INTERCEPTOR PERSONALIZZATI -->
+			<interceptor name="qborrowInterceptor" class="qborrowInterceptor"/>
+		</interceptors>
+		<global-results>
+			<result name="closePopup" >/pages/ClosePopup.jsp</result>
+			<result name="home">/pages/Home.jsp</result>
+			<result name="index">/Index.jsp</result>
+			<result name="file" type="stream">
+				<param name="bufferSize">2048</param>
+			</result>
+			<result name="ajax" type="stream">
+				<param name="bufferSize">512</param>
+			</result>
+		</global-results>
+		
+		<action name="home" class="homeAction" />
+		
+		<action name="login" class="loginAction" >
+			<result name="redirect">/pages/Redirect.jsp</result>
+			<result name="home">/pages/Home.jsp</result>
+		</action>
+		
+		<action name="logout" class="logoutAction" />
+		
+		<action name="oggetti" class="oggettiAction">
+			<result name="mainPage">/pages/Oggetti.jsp</result>
+			<interceptor-ref name="quixStack" >
+				<param name="quixValidationInterceptor.exludeMethods">select</param>
+			</interceptor-ref>
+			<interceptor-ref name="qborrowInterceptor"/>
+		</action>
+		
+		<action name="prestiti" class="prestitiAction">
+			<result name="mainPage">/pages/Prestiti.jsp</result>
+			<interceptor-ref name="quixStack" >
+				<param name="quixValidationInterceptor.exludeMethods">select</param>
+			</interceptor-ref>
+			<interceptor-ref name="qborrowInterceptor"/>
+		</action>
+		
+		<action name="soggetti" class="soggettiAction">
+			<result name="mainPage">/pages/Soggetti.jsp</result>
+			<interceptor-ref name="quixStack" >
+				<param name="quixValidationInterceptor.exludeMethods">select</param>
+			</interceptor-ref>
+			<interceptor-ref name="qborrowInterceptor"/>
+		</action>
+		
+	   
+	</package>
+</struts>

@@ -1,0 +1,7 @@
+.settings
+target
+target-eclipse
+pom.xml.releaseBackup
+release.properties
+.idea
+*.iml

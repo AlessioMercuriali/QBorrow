@@ -1,0 +1,202 @@
+.banner-bg-logo {
+	background-image:url(../images/logo_banner.jpg);
+	background-size:100% 58px;
+}
+.banner-bg-curve {
+	background-image:url(../images/curve_banner.jpg);
+	background-size:100% 58px;
+}
+.banner-bg-end {
+	background-image:url(../images/image_banner.jpg);
+	background-size:100% 58px;
+}
+.banner-bg-blue {
+	background-color:#003366;
+	background-image:url(../images/banner_bgd_blue.gif);
+	background-size:auto 58px;
+	color:#f6cd33;
+	font-family:Arial,Verdana, Sans-Serif;
+	font-size:12px;
+	font-weigth:bold;
+}
+.banner-bg-gray {
+	background-color:#f2f2f2;
+	background-image:url(../images/banner_bgd_gray.gif);
+	background-size:auto 58px;
+	background-repeat:repeat-x;
+}
+.col-banner {
+	padding:0px;
+	height:58px;
+}
+.banner-link {
+	color:#2A354B;
+	text-decoration:none;
+	font-family:Arial,Verdana, Sans-Serif;
+	font-size:10px;
+	font-weight:bold;
+}
+/** generici */
+.no-autogen:disabled{
+	text-decoration:line-through;
+}
+.spacer-top {
+	margin-top:10px;
+}
+.little-spacer-bottom {
+	margin-bottom:5px !important;
+}
+.modal-embedded {
+	overflow-y: initial !important;
+}
+.modal-embedded .modal-dialog .modal-content .modal-body{
+	overflow-y:auto;
+}
+.alert.alert-condensed {
+	margin-bottom:0;
+	padding: 5px;
+}
+.clickable{
+	cursor:pointer;
+}
+.table>thead>tr>th{
+	background-color:lightgray;
+}
+.panel-group-popup{
+	margin-bottom:0px;
+}
+/** filtri */
+.filter-summary>button{
+	margin:2px;
+}
+/** lista azioni generiche e di gruppo */
+ul.group-list-icon{
+	list-style:none;
+	float:right;
+	margin:0px;
+	padding:0px;
+}
+ul.group-list-icon>li{
+	color:#3276b1;
+	cursor:pointer;
+	float:right;
+	margin:0px 10px;
+	padding:1px;
+	text-align:center;
+}
+
+ul.group-list-icon>li>span.filetype,
+ul.group-list-icon>li>span.glyphicon {
+	font-size:150%;
+}
+/** lista azioni di riga */
+ul.list-icon{
+	list-style:none;
+	float:left;
+	margin:0px;
+	padding:0px;
+}
+ul.list-icon>li{
+	cursor:pointer;
+	float:left;
+	margin:0px 10px;
+	padding:1px;
+	text-align:center;
+}
+.glyphicon-disabled{
+	color:gray;
+	cursor:not-allowed;
+}
+.glyphicon-descr{
+	font-size:75%;
+}
+option:disabled {
+	background-color:lightgray;
+}
+@media (min-width: 768px) {
+	.dl-nhorizontal dt {
+	float:left;
+	width:25px;
+	clear:left;
+	text-align:right;
+	white-space:nowrap;
+	}
+	.dl-nhorizontal dd {
+	margin-left:30px;
+	margin-bottom:5px;
+	}
+}
+table.table-bottom-border {
+	border-bottom:1px solid #e5e5e5;
+}
+.has-error-server .help-block,
+.has-error-server .control-label,
+.has-error-server .radio,
+.has-error-server .checkbox,
+.has-error-server .radio-inline,
+.has-error-server .checkbox-inline {
+	color: #a94442;
+}
+.has-error-server .form-control {
+	border-color: #a94442;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-error-server .form-control:focus {
+	border-color: #843534;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.has-error-server .input-group-addon {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #a94442;
+}
+.has-error-server .form-control-feedback {
+	color: #a94442;
+}
+/*.table-sectioned > tbody > tr:first-child > th {
+	box-shadow: 0 5px 5px 2px #d5d5d5 inset;
+	font-style: italic;
+}
+.table-sectioned > tbody > tr + tr > th:first-child,
+.table-sectioned > tbody > tr + tr > td:first-child {
+	background-position: left center;
+	background-size: 5px 100%;
+	background-image: linear-gradient(to left, #fff, #d5d5d5);
+	background-repeat: no-repeat;
+}
+.table-sectioned > tbody > tr + tr > th:last-child,
+.table-sectioned > tbody > tr + tr > td:last-child {
+	background-position: right center;
+	background-size: 5px 100%;
+	background-image: linear-gradient(to right, #fff, #d5d5d5);
+	background-repeat: no-repeat;
+}*/
+.table.table-sectioned > thead th {
+	border-bottom: 2px solid #A5A5A5;
+}
+.table-sectioned > thead th:first-child {
+	border-left: 1px solid lightgray;
+}
+.table-sectioned > thead th:last-child {
+	border-right: 1px solid lightgray;
+}
+.table-sectioned > tbody > tr:first-child > th {
+	border-top: 2px solid #A5A5A5;
+	font-style: italic;
+}
+.table-sectioned > tbody > tr > th:first-child,
+.table-sectioned > tbody > tr > td:first-child {
+	border-left: 1px solid #A5A5A5;
+}
+.table-sectioned > tbody > tr > th:last-child,
+.table-sectioned > tbody > tr > td:last-child {
+	border-right: 1px solid #A5A5A5;
+}
+.table-sectioned > tbody {
+	border-bottom: 1px solid #A5A5A5;
+}
+td.narrow {
+	width: 1%;
+}

@@ -1,0 +1,1912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<short-name>quix-commons</short-name>
+	<uri>/quix-commons</uri>
+	<description></description>
+	<tag>
+		<name>pager</name>
+		<tag-class>it.quix.commons.taglib.PagerTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>Tag per visualizzare un paginatore</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome dell'attributo che contiene il paginatore
+			</description>
+		</attribute>
+		<attribute>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Scopo da cui recuperare il pager: request o session
+				(String)
+			</description>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se scope=session e il pager è contenuto all'interno di
+				un bean, il nome della proprietà che contiene il Pager
+			</description>
+		</attribute>
+		<attribute>
+			<name>onclick</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Funzione javascript da richiamare prima del cambio di
+				pagina
+			</description>
+		</attribute>
+		<attribute>
+			<name>tableStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe che specifica lo stile della tabella creata dal
+				Pager
+			</description>
+		</attribute>
+		<attribute>
+			<name>cellStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe che specifica lo stile di una cella della tabella
+				creata dal pager
+			</description>
+		</attribute>
+		<attribute>
+			<name>linkStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe che specifica lo stile dei link per il cambio di
+				pagina generati dal pager
+			</description>
+		</attribute>
+		<attribute>
+			<name>selectedStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe che contiene lo stile del numero della pagina
+				corrente
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>sysmenu</name>
+		<tag-class>it.quix.commons.taglib.SysMenuTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>Tag per visualizzare il menu</description>
+		<attribute>
+			<name>datasource</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il datasource name all'interno
+				dell'applicazione in cui cercare i nodi del menu dalla
+				tabella sys_menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>localize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il locale di riferimento da cui prendere le
+				descrizione dei nodi
+			</description>
+		</attribute>
+		<attribute>
+			<name>codcompany</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il codice della compania in base al quale
+				filtrare i nodi del menu
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>sysmenunavbar</name>
+		<tag-class>
+			it.quix.commons.taglib.SysMenuNavigationBarTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Disegna il percorso di navigazione ad arrivare alla pagina
+			corrente
+		</description>
+		<attribute>
+			<name>datasource</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il datasource name all'interno
+				dell'applicazione in cui cercare i nodi del menu dalla
+				tabella sys_menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>localize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il locale di riferimento da cui prendere le
+				descrizione dei nodi
+			</description>
+		</attribute>
+		<attribute>
+			<name>separator</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Separatore tra un link e il suo successivo (carattere o
+				HTML)
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>sysmenufooterbar</name>
+		<tag-class>
+			it.quix.commons.taglib.SysMenuFooterBarTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Disegna il menu nel footer riportando solo i nodi di primo
+			livello tipo una barra di navigazione
+		</description>
+		<attribute>
+			<name>datasource</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il datasource name all'interno
+				dell'applicazione in cui cercare i nodi del menu dalla
+				tabella sys_menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>localize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Definisce il locale di riferimento da cui prendere le
+				descrizione dei nodi
+			</description>
+		</attribute>
+		<attribute>
+			<name>separator</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Separatore tra un link e il suo successivo (carattere o
+				HTML)
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>messagesinit</name>
+		<tag-class>it.quix.commons.taglib.MessageInitTag</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag di inizializzazione dei messaggi di errore
+		</description>
+	</tag>
+	<tag>
+		<name>errors</name>
+		<tag-class>it.quix.commons.taglib.MessageErrorTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Tag per visualizzare degli errori</description>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The servlet context attribute key for our resources.
+			</description>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The session attribute key for our locale.
+			</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The request attribute key for our error messages (if
+				any).
+			</description>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The name of the property for which error messages should
+				be returned, or null to return all errors
+			</description>
+		</attribute>
+		<attribute>
+			<name>imagepath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Nome dell'immagine di errore.</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La stringa da visualizzare nel riquadro di error a
+				sovrascrivere il messaggio reperito dal bundle
+			</description>
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome della classe da applicare al div di errore.
+			</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza del div che contiene l'errore.
+			</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Altezza del div che contiene l'errore.
+			</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>notManagedErrors</name>
+		<tag-class>it.quix.commons.taglib.NotManagedErrorTag</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per visualizzare degli errori non gestiti con la tag
+			errors
+		</description>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The servlet context attribute key for our resources.
+			</description>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The session attribute key for our locale.
+			</description>
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome della classe da applicare al div di errore.
+			</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza del div che contiene l'errore.
+			</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>infos</name>
+		<tag-class>it.quix.commons.taglib.MessageInfoTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Tag per visualizzare un messaggio di info
+		</description>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The servlet context attribute key for our resources.
+			</description>
+		</attribute>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The message key of the message to be retrieved.
+			</description>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The default Locale for our server.
+			</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Name of the bean that contains the message key.
+			</description>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Name of the property to be accessed on the specified
+				bean.
+			</description>
+		</attribute>
+		<attribute>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				The scope to be searched to retrieve the specified bean.
+			</description>
+		</attribute>
+		<attribute>
+			<name>imagepath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Nome dell'immagine di errore.</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Altezza del div che contiene l'errore.
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La stringa da visualizzare nel riquadro di info a
+				sovrascrivere il messaggio reperito dal bundle.
+			</description>
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome della classe da applicare al div di errore.
+			</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza del div che contiene l'errore.
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>attributeInput</name>
+		<tag-class>
+			it.quix.commons.taglib.SysAttributeInputTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Questa tag lib serve per gestire automaticamente la
+			presentazione dei valori di parametri di sistema in un
+			qualsiasi form. Lo scopo principale della taglibrary è
+			sollevare lo sviluppatore dall’implementazione della logica
+			necessaria per gestire fondamentalmente 3 casi possibili:
+			nessun valore, un solo valore e più di un valore presente
+			per una singola variabile di sistema. 1. nessun valore per
+			una certa chiave, organizzazione, lingua, selectedvalue
+			viene visualizzato un semplice campo di input per il
+			parametro di sistema impostato con il value passato
+			attraverso l’attributo specifico. 2. un solo valore per una
+			certa chiave, organizzazione, lingua, selectedvalue viene
+			visualizzata una label di valore selectedvalue ed un campo
+			hidden con name=fieldname e value=selectedvalue. 3. più di
+			un valore per una certa chiave, organizzazione, lingua,
+			selectedvalue viene visualizzata una select con tante
+			options quanti sono gli attributi inseriti. Nel caso in cui
+			il selectedvalue sia presente nella lista delle options
+			trovate viene selezionata la option corrispondente; nel caso
+			il selectedvalue non sia più presente fra le option trovate
+			viene aggiunto un nuovo elemento option selected (di colore
+			rosso), ed alla destra viene visualizzata l’icona di errore
+			con un messaggio che informa l’utente che è stato salvato un
+			valore che non esiste più fra gli attributi di sistema.
+		</description>
+		<attribute>
+			<name>htmlName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Il nome del campo da assegnare al campo di input (text o
+				hidden) o alla select che verrà generata.
+			</description>
+		</attribute>
+		<attribute>
+			<name>attributeName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Il nome della chiave, ovvero il nome del parametro di
+				sistema a cui devono venire assegnati i valori
+				impostati.
+			</description>
+		</attribute>
+		<attribute>
+			<name>organization</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				L’organizzazione a cui appartengono tutti i valori
+				possibili per un certo parametro di sistema.
+			</description>
+		</attribute>
+		<attribute>
+			<name>language</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La lingua a cui appartengono tutti i valori possibili
+				per un certo parametro di sistema
+			</description>
+		</attribute>
+		<attribute>
+			<name>htmlValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				L’attuale “value” che il campo di input o una delle
+				option della select generata dovrà presentare.
+			</description>
+		</attribute>
+		<attribute>
+			<name>styleclass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La classe da applicare al campo di input o alla select.
+				N.B. non è applicabile nel caso in cui per un certo
+				parametro esista un solo valore possibile (label + campo
+				di input hidden).
+			</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nel caso in cui sia importante determinare l’ordine di
+				tabulazione dei campi in un form.
+			</description>
+		</attribute>
+		<attribute>
+			<name>addBlankOption</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Aggiunge l'opzione blanck se è una combo
+			</description>
+		</attribute>
+		<attribute>
+			<name>blankValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Valore per il blank</description>
+		</attribute>
+		<attribute>
+			<name>tabindex</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Ordine del campo nel form</description>
+		</attribute>
+		<attribute>
+			<name>onChange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La funzione da applicare all'evento javascript onChange
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>attributeOutput</name>
+		<tag-class>
+			it.quix.commons.taglib.SysAttributeOutputTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Visualizza il valore selezionato di un attributo della
+			tabella sys_attribute
+		</description>
+		<attribute>
+			<name>attributeName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>nome del campo del form</description>
+		</attribute>
+		<attribute>
+			<name>code</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>codice selezionato</description>
+		</attribute>
+		<attribute>
+			<name>organization</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>organizzazione</description>
+		</attribute>
+		<attribute>
+			<name>language</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>lingua</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>popupDescription</name>
+		<tag-class>
+			it.quix.commons.taglib.PopupDescriptionTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Questa tag library serve a gestire la visualizzazione delle
+			descrizioni nelle liste. E’ possibile settare sulla pagina
+			jsp di lista la lunghezza massima da visualizzare, le
+			dimensioni dell’area nella quale visualizzare la
+			descrizione, la classe di stile da caricare per la
+			personalizzazione della vista.
+		</description>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Identificativo dello span che viene mostrato nella jsp
+				(deve essere una stringa).
+			</description>
+		</attribute>
+		<attribute>
+			<name>description</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Stringa da presentare che eventualmente viene troncata.
+			</description>
+		</attribute>
+		<attribute>
+			<name>nmaxchar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Lunghezza massima alla quale troncare.
+			</description>
+		</attribute>
+		<attribute>
+			<name>spanWidth</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza massima dell’area span nella quale
+				visualizzare l’intero messaggio.
+			</description>
+		</attribute>
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe css dalla quale caricare gli stili per le
+				personalizzazioni della vista (Se non c’è viene
+				valorizzato con truncateTagDefaultClass).
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>expandDescription</name>
+		<tag-class>
+			it.quix.commons.taglib.ExpandDescriptionTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Questa tag library ha lo scopo di gestire la visualizzazione
+			delle descrizioni nelle liste. Essa tronca le descrizioni
+			più lunghe di un valore passato come parametro ma rispetto
+			alla taglib presentata nel paragrafo precedente modifica la
+			modalità di visualizzazione del testo completo, in questo
+			caso l’intero testo viene esploso completamente nel td della
+			tabella che la contiene.
+		</description>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Identificativo dello span che viene mostrato nella jsp.
+			</description>
+		</attribute>
+		<attribute>
+			<name>description</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Stringa da troncare.</description>
+		</attribute>
+		<attribute>
+			<name>nmaxchar</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Lunghezza massima alla quale troncare.
+			</description>
+		</attribute>
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe css dalla quale caricare gli stili per le
+				personalizzazioni della vista (se non c’è viene
+				valorizzato con truncateTagDefaultClass).
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>calendar</name>
+		<tag-class>it.quix.commons.taglib.CalendarTag</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per creare un campo da rempire con una data
+		</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Nome del campo</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Valore del campo</description>
+		</attribute>
+		<attribute>
+			<name>readonly</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Booleano che definisce se il campo è in readonly
+			</description>
+		</attribute>
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe dello stile da applicare al campo di testo
+			</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Stile da applicare alla text</description>
+		</attribute>
+		<attribute>
+			<name>maxlength</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Numero massimo di caratteri nel campo di testo
+			</description>
+		</attribute>
+		<attribute>
+			<name>image</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da utilizzare come pulsante
+			</description>
+		</attribute>
+		<attribute>
+			<name>onblur</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[ Set the html onblur attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onchange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onchange attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onclick</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onclick attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>ondblclick</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html ondblclick attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onfocus</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onfocus attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onkeydown</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onkeydown attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onkeypress</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onkeypress attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onkeyup</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onkeyup attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onmousedown</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onmousedown attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onmousemove</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onmousemove attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onmouseout</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onmouseout attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onmouseover</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onmouseover attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onmouseup</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onmouseup attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>onselect</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description><![CDATA[Set the html onselect attribute on rendered html element]]></description>
+		</attribute>
+		<attribute>
+			<name>showTimes</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Booleano che definisce se il campo deve mostrare il tempo</description>
+		</attribute>
+		<attribute>
+			<name>formatDate</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Formato della data</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>messagesDisplay</name>
+		<tag-class>it.quix.commons.taglib.MessagesDisplay</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per visualizzare i messaggi attivi.
+		</description>
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Titolo della sezione che visualizza i messaggi
+				dell'amministratore (se non specificato non viene
+				visualizzato nessun titolo)
+			</description>
+		</attribute>
+		<attribute>
+			<name>classNoteLabel</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe della cella del titolo della sezione
+			</description>
+		</attribute>
+		<attribute>
+			<name>classNoteContainer</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe della cella che contiene i messaggi da
+				visualizzare
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>initPopup</name>
+		<tag-class>it.quix.commons.taglib.popup.InitPopupTag</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per importare js e css necessari per le popup.
+		</description>
+		<attribute>
+			<name>themepath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Percorso base dei css. Se non specificato
+				request.getContextPath()+"/themes"
+			</description>
+		</attribute>
+		<attribute>
+			<name>scriptpath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Percorso base dei js. Se non specificato
+				request.getContextPath()+"/script";
+			</description>
+		</attribute>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome del foglio di stile con le classi per le popup. Se
+				non specificato popup.css
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>buttonPopup</name>
+		<tag-class>
+			it.quix.commons.taglib.popup.ButtonPopupTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per generare un pulsante che apre una popup.
+		</description>
+		<attribute>
+			<name>clazz</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Classe del pulsante</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Style del pulsante</description>
+		</attribute>
+		<attribute>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Etichetta del pulsante. Per prima cosa la tag prova a
+				vedere se è una chiave del file di properties altrimenti
+				la stampa com'è
+			</description>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Url della pagina da aprire in popup
+			</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Titolo della popup</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza della popup (se absolute = true) altrimenti la
+				larghezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Altezza della popup (se absolute = true) altrimenti
+				l'altezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>absolute</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se le dimensioni della popup sono assolute ("true") o se
+				indicano lo spazio da lasciare libero ai bordi della
+				popup ("false"). "x" per indicare solo la larghezza come
+				assoluta, "y" per il contrario. Default false
+			</description>
+		</attribute>
+		<attribute>
+			<name>modal</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è modale ("MODAL") oppure no ("EXCLUSIVE").
+				Default EXCLUSIVE
+			</description>
+		</attribute>
+		<attribute>
+			<name>draggable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è trascinabile ("DRAGGABLE") oppure no
+				("-DRAGGABLE"). Default -DRAGGABLE
+			</description>
+		</attribute>
+		<attribute>
+			<name>relx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrelx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>rely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeclik</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				"CLOSECLICK" se la finestra si chiude cliccando sulla X
+				in alto a destra, "NOCLOSE" se non visualizzare il
+				pulsante di chiudi, "MOUSEOFF" per chiudere basta il
+				passaggio del mouse sul bottone. Default "CLOSECLICK"
+			</description>
+		</attribute>
+		<attribute>
+			<name>imgcolose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da visualizzare come pulsante di chiusura. Di
+				default request.getContextPath() +"/images/close.gif"
+			</description>
+		</attribute>
+		<attribute>
+			<name>altimgclose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo da visualizzare come tooltip sul pulsante di
+				chiusura. Default "Click to Close"
+			</description>
+		</attribute>
+		<attribute>
+			<name>iframename</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome del iframe contenuto nella popup. Deve essere
+				diverso per ogni finestra aperta allo stesso momento. Se
+				non specificato viene generato dinamicamente.
+			</description>
+		</attribute>
+		<attribute>
+			<name>returnfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Funzione da chiamare su un ritorno via javascript
+			</description>
+		</attribute>
+		<attribute>
+			<name>scroll</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se visualizzare o meno le barre di scorrimento. Valori
+				accettati yes, no, auto. Defualt auto
+			</description>
+		</attribute>
+		<attribute>
+			<name>urlisfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se il valore specificato come url è una funzione
+				javascript che restituisce l'url ("true") o direttamente
+				l'url ("false"). Default "false"
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>imagePopup</name>
+		<tag-class>
+			it.quix.commons.taglib.popup.ImagePopupTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per generare un'immagine che apre una popup.
+		</description>
+		<attribute>
+			<name>image</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Path completo dell'immagine da utilizzare.
+			</description>
+		</attribute>
+		<attribute>
+			<name>altimage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo alternativo dell'icona di apertura
+			</description>
+		</attribute>
+		<attribute>
+			<name>imageheight</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Altezza dell'immagine</description>
+		</attribute>
+		<attribute>
+			<name>imagewidth</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Larghezza dell'immagine</description>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Url della pagina da aprire in popup
+			</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Titolo della popup</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza della popup (se absolute = true) altrimenti la
+				larghezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Altezza della popup (se absolute = true) altrimenti
+				l'altezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>absolute</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se le dimensioni della popup sono assolute ("true") o se
+				indicano lo spazio da lasciare libero ai bordi della
+				popup ("false"). "x" per indicare solo la larghezza come
+				assoluta, "y" per il contrario. Default false
+			</description>
+		</attribute>
+		<attribute>
+			<name>modal</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è modale ("MODAL") oppure no ("EXCLUSIVE").
+				Default EXCLUSIVE
+			</description>
+		</attribute>
+		<attribute>
+			<name>draggable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è trascinabile ("DRAGGABLE") oppure no
+				("-DRAGGABLE"). Default -DRAGGABLE
+			</description>
+		</attribute>
+		<attribute>
+			<name>relx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrelx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>rely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeclik</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				"CLOSECLICK" se la finestra si chiude cliccando sulla X
+				in alto a destra, "NOCLOSE" se non visualizzare il
+				pulsante di chiudi, "MOUSEOFF" per chiudere basta il
+				passaggio del mouse sul bottone. Default "CLOSECLICK"
+			</description>
+		</attribute>
+		<attribute>
+			<name>imgcolose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da visualizzare come pulsante di chiusura. Di
+				default request.getContextPath() +"/images/close.gif"
+			</description>
+		</attribute>
+		<attribute>
+			<name>altimgclose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo da visualizzare come tooltip sul pulsante di
+				chiusura. Default "Click to Close"
+			</description>
+		</attribute>
+		<attribute>
+			<name>iframename</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome del iframe contenuto nella popup. Deve essere
+				diverso per ogni finestra aperta allo stesso momento. Se
+				non specificato viene generato dinamicamente.
+			</description>
+		</attribute>
+		<attribute>
+			<name>returnfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Funzione da chiamare su un ritorno via javascript
+			</description>
+		</attribute>
+		<attribute>
+			<name>scroll</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se visualizzare o meno le barre di scorrimento. Valori
+				accettati yes, no, auto. Defualt auto
+			</description>
+		</attribute>
+		<attribute>
+			<name>urlisfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se il valore specificato come url è una funzione
+				javascript che restituisce l'url ("true") o direttamente
+				l'url ("false"). Default "false"
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>compactString</name>
+		<tag-class>it.quix.commons.taglib.CompactStringTag</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Tag per includere una stringa in un div di larghezza fissa e
+			con un lunghezza massima (richiede common.js)
+		</description>
+		<attribute>
+			<name>string</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Stringa da visualizzare</description>
+		</attribute>
+		<attribute>
+			<name>nmaxchar</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Intero che indica il numero massimo di caratteri da
+				visualizzare sulla pagina. Default 200
+			</description>
+		</attribute>
+		<attribute>
+			<name>divwidth</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Intero che specifica la larghezza massima del div in
+				pixel. Default 300.
+			</description>
+		</attribute>
+		<attribute>
+			<name>isHTML</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Stringa che indica se il contenuto è o meno HTML. Se non
+				lo è la funzione provvede all'encoding
+			</description>
+		</attribute>
+		<attribute>
+			<name>linechar</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se maggiore di 0, lunghezza massima in caratteri di una
+				linea. Solo se la stringa non è html
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>utilMenu</name>
+		<tag-class>
+			it.quix.commons.taglib.utilmenu.UtilMenuTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Tag per creare un piccolo menu di utilità. Richiede
+			formerror.js.
+		</description>
+		<attribute>
+			<name>image</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da cliccare per aprire il menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>alt</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo da visualizzare come tooltip sull'immagine per
+				aprire il menu. Se si passa una chiave si preoccupa di
+				andare a recuperare la descrizione dal file di
+				properties
+			</description>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Identificativo del menu univoco all'interno della pagina
+			</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Titolo del menu di utilità. Se si passa una chiave si
+				preoccupa di andare a recuperare la descrizione dal file
+				di properties
+			</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Intero che specifica la larghezza in pixel del menu.
+				Default 200.
+			</description>
+		</attribute>
+		<attribute>
+			<name>altclose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo alternativo dell'icona di chiudi menu. Se si passa
+				una chiave si preoccupa di andare a recuperare la
+				descrizione dal file di properties. Default 'Chiudi'.
+			</description>
+		</attribute>
+		<attribute>
+			<name>classTitle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe del titolo del menu. Defualt 'menuTitle'.
+			</description>
+		</attribute>
+		<attribute>
+			<name>imageclose</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da visualizzare come chiudi menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>classElement</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe degli elementi del menu. Default 'menuDxRow'
+			</description>
+		</attribute>
+		<attribute>
+			<name>classElementOver</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Classe degli elementi del menu quando il mouse si sposta
+				su quel elemento. Default 'menuDxRowOver'
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>utilMenuElement</name>
+		<tag-class>
+			it.quix.commons.taglib.utilmenu.UtilMenuElementTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Tag per creare una elemento di piccolo menu di utilità.
+			Richiede formerror.js. Utilizzabile solo all'interno di un
+			tag utilMenu
+		</description>
+		<attribute>
+			<name>alt</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo alternativo per la voce di menu. Se si passa una
+				chiave si preoccupa di andare a recuperare la
+				descrizione dal file di properties.
+			</description>
+		</attribute>
+		<attribute>
+			<name>javascriptAction</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Codice javascript da eseguire quando si seleziona la
+				voce
+			</description>
+		</attribute>
+		<attribute>
+			<name>image</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine corrispondente alla voce di menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo dell'elemento. Se si passa una chiave si preoccupa
+				di andare a recuperare la descrizione dal file di
+				properties.
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>utilMenuElementPopup</name>
+		<tag-class>
+			it.quix.commons.taglib.utilmenu.UtilMenuElementPopupTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Tag per creare una elemento di piccolo menu di utilità.
+			Richiede formerror.js. Utilizzabile solo all'interno di un
+			tag utilMenu. Apre una popup Quix.
+		</description>
+		<attribute>
+			<name>alt</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo alternativo per la voce di menu. Se si passa una
+				chiave si preoccupa di andare a recuperare la
+				descrizione dal file di properties.
+			</description>
+		</attribute>
+		<attribute>
+			<name>image</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine corrispondente alla voce di menu
+			</description>
+		</attribute>
+		<attribute>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo dell'elemento. Se si passa una chiave si preoccupa
+				di andare a recuperare la descrizione dal file di
+				properties.
+			</description>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Url della pagina da aprire in popup
+			</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Titolo della popup</description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Larghezza della popup (se absolute = true) altrimenti la
+				larghezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Altezza della popup (se absolute = true) altrimenti
+				l'altezza dello spazio esterno della popup. Default 100.
+			</description>
+		</attribute>
+		<attribute>
+			<name>absolute</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se le dimensioni della popup sono assolute ("true") o se
+				indicano lo spazio da lasciare libero ai bordi della
+				popup ("false"). "x" per indicare solo la larghezza come
+				assoluta, "y" per il contrario. Default false
+			</description>
+		</attribute>
+		<attribute>
+			<name>modal</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è modale ("MODAL") oppure no ("EXCLUSIVE").
+				Default EXCLUSIVE
+			</description>
+		</attribute>
+		<attribute>
+			<name>draggable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se la popup è trascinabile ("DRAGGABLE") oppure no
+				("-DRAGGABLE"). Default -DRAGGABLE
+			</description>
+		</attribute>
+		<attribute>
+			<name>relx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrelx</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>rely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>valrely</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				relx, valrelx, rely e valrely impostano la posizione da
+				cui disegnare la popup. Se relx e rely sono uguali a
+				MIDX e MIDY il punto di riferimento è il centro della
+				pagina, se RELX e RELY l'angolo in alto a sinistra della
+				pagina. I valori valrelx e valrely indicano quando
+				spostarsi dalla posizione di riferiemnto. Default MIDX,
+				0, MIDY, 0 (centrata)
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeclik</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				"CLOSECLICK" se la finestra si chiude cliccando sulla X
+				in alto a destra, "NOCLOSE" se non visualizzare il
+				pulsante di chiudi, "MOUSEOFF" per chiudere basta il
+				passaggio del mouse sul bottone. Default "CLOSECLICK"
+			</description>
+		</attribute>
+		<attribute>
+			<name>imgcolose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Immagine da visualizzare come pulsante di chiusura. Di
+				default request.getContextPath() +"/images/close.gif"
+			</description>
+		</attribute>
+		<attribute>
+			<name>altimgclose</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Testo da visualizzare come tooltip sul pulsante di
+				chiusura. Default "Click to Close"
+			</description>
+		</attribute>
+		<attribute>
+			<name>iframename</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nome del iframe contenuto nella popup. Deve essere
+				diverso per ogni finestra aperta allo stesso momento. Se
+				non specificato viene generato dinamicamente.
+			</description>
+		</attribute>
+		<attribute>
+			<name>returnfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Funzione da chiamare su un ritorno via javascript
+			</description>
+		</attribute>
+		<attribute>
+			<name>scroll</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se visualizzare o meno le barre di scorrimento. Valori
+				accettati yes, no, auto. Defualt auto
+			</description>
+		</attribute>
+		<attribute>
+			<name>urlisfunction</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Se il valore specificato come url è una funzione
+				javascript che restituisce l'url ("true") o direttamente
+				l'url ("false"). Default "false"
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>organizationInput</name>
+		<tag-class>
+			it.quix.commons.taglib.SysOrganizationInputTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			Questa tag lib serve per gestire automaticamente la
+			presentazione delle organizzazioni in un qualsiasi form. Lo
+			scopo principale della taglibrary è sollevare lo
+			sviluppatore dall’implementazione della logica necessaria
+			per gestire fondamentalmente 3 casi possibili: nessun
+			valore, un solo valore e più di un valore. 1. nessun valore
+			per una certa chiave viene visualizzato un semplice campo di
+			input per il parametro di sistema impostato con il value
+			passato attraverso l’attributo specifico. 2. un solo valore
+			per una certa chiave viene visualizzata una label di valore
+			selectedvalue ed un campo hidden con name=fieldname e
+			value=selectedvalue. 3. più di un valore per una certa
+			chiave viene visualizzata una select con tante options
+			quante sono le organizzazioni inserite. Nel caso in cui il
+			selectedvalue sia presente nella lista delle options trovate
+			viene selezionata la option corrispondente; nel caso il
+			selectedvalue non sia più presente fra le option trovate
+			viene aggiunto un nuovo elemento option selected (di colore
+			rosso), ed alla destra viene visualizzata l’icona di errore
+			con un messaggio che informa l’utente che è stato salvato un
+			valore che non esiste più fra le organizzazioni.
+		</description>
+		<attribute>
+			<name>htmlName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Il nome del campo da assegnare al campo di input (text o
+				hidden) o alla select che verrà generata.
+			</description>
+		</attribute>
+		<attribute>
+			<name>htmlValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				L’attuale “value” che il campo di input o una delle
+				option della select generata dovrà presentare.
+			</description>
+		</attribute>
+		<attribute>
+			<name>styleclass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La classe da applicare al campo di input o alla select.
+				N.B. non è applicabile nel caso in cui per un certo
+				parametro esista un solo valore possibile (label + campo
+				di input hidden).
+			</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Nel caso in cui sia importante determinare l’ordine di
+				tabulazione dei campi in un form.
+			</description>
+		</attribute>
+		<attribute>
+			<name>addBlankOption</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Aggiunge l'opzione blanck se è una combo
+			</description>
+		</attribute>
+		<attribute>
+			<name>blankValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Valore per il blank</description>
+		</attribute>
+		<attribute>
+			<name>tabindex</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Ordine del campo nel form</description>
+		</attribute>
+		<attribute>
+			<name>onChange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				La funzione da applicare all'evento javascript onChange
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>organizationOutput</name>
+		<tag-class>
+			it.quix.commons.taglib.SysOrganizationOutputTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Visualizza il valore selezionato di una organizzazione della
+			tabella sys_organization
+		</description>
+		<attribute>
+			<name>code</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>codice selezionato</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>utilMenuTitle</name>
+		<tag-class>
+			it.quix.commons.taglib.utilmenu.UtilMenuTitleTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Tag per creare un nuovo titolo (oltre il primo, inserito di
+			default) in un menu di utilità. Richiede formerror.js.
+		</description>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				Titolo del menu di utilità. Se si passa una chiave si
+				preoccupa di andare a recuperare la descrizione dal file
+				di properties
+			</description>
+		</attribute>
+	</tag>
+</taglib>
+

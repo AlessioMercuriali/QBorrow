@@ -1,0 +1,236 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Code Generator</name>
+	<groupId>it.quix.framework</groupId>
+	<artifactId>framework-codeGenerator</artifactId> 
+	<version>01.00.00</version>
+	<packaging>pom</packaging> 
+	<description /> 
+	<properties>
+		<!-- 
+		   ____   __    _______ __     __  
+		  / __ \  ) )  ( (_   _(_ \   / _)                                                                     
+		 / /  \ \( (    ) )| |   \ \_/ /                                                                       
+		( (    ) )) )  ( ( | |    \   /                                                                        
+		( (  /\) ( (    ) )| |    / _ \                                                                        
+		 \ \_\ \/ ) \__/ (_| |___/ / \ \_                                                                      
+		  \___\ \_\______/_____(__/   \__)                                                                     
+		       \__)                                                                                            
+		 _________ ______    ____     __    __  ________       ___ ____   ______   __   ___                    
+		(_   _____(   __ \  (    )    \ \  / / / ___(  (       )  / __ \ (   __ \ () ) / __)                   
+		  ) (___   ) (__) ) / /\ \    () \/ ()( (__  \  \  _  /  / /  \ \ ) (__) )( (_/ /                      
+		 (   ___) (    __/ ( (__) )   / _  _ \ ) __)  \  \/ \/  ( ()  () (    __/ ()   (                       
+		  ) (      ) \ \  _ )    (   / / \/ \ ( (      )   _   (( ()  () )) \ \  _() /\ \                      
+		 (   )    ( ( \ \_)/  /\  \ /_/      \_\ \___  \  ( )  / \ \__/ /( ( \ \_)( (  \ \                     
+		  \_/      )_) \__/__(  )__(/          \\____\  \_/ \_/   \____/  )_) \__/()_)  \_\                    
+		                                                                                                       
+		   ____ ____  ______    _____ _____   _____    __      _ ___________    ____ ________ ____   ______    
+		  / ___/ __ \(_  __ \  / ___// ___ \ / ___/   /  \    / / ___(   __ \  (    (___  ___/ __ \ (   __ \   
+		 / /  / /  \ \ ) ) \ \( (__ / /   \_( (__    / /\ \  / ( (__  ) (__) ) / /\ \   ) ) / /  \ \ ) (__) )  
+		( (  ( ()  () ( (   ) )) __( (  ____ ) __)   ) ) ) ) ) )) __)(    __/ ( (__) ) ( ( ( ()  () (    __/   
+		( (  ( ()  () )) )  ) ( (  ( ( (__  ( (     ( ( ( ( ( (( (    ) \ \  _ )    (   ) )( ()  () )) \ \  _  
+		 \ \__\ \__/ // /__/ / \ \__\ \__/ / \ \___ / /  \ \/ / \ \__( ( \ \_)/  /\  \ ( (  \ \__/ /( ( \ \_)) 
+		  \____\____/(______/   \____\____/   \____(_/    \__/   \____)_) \__/__(  )__\/__\  \____/  )_) \__/  
+		-->
+		<!-- INSERIRE QUI SOTTO I PARAMETRI CON CUI GENERARE IL NUOVO PROGETTO -->
+		<!-- 
+		Versione stabile del Framework da usare. Questa versione e' quella che viene inserita all'interno dei vari pom per essere
+		utilizzata come dipendenza. E' necessario concordare con il team di prodotto quale sia la versione pi? idonea da utilizzare
+		per i vostri scopi.
+		-->
+		<framework-version>03.03.00-SNAPSHOT</framework-version>
+		<!-- se "true" genera i DAO JDBC-->
+		<useBaseDAO>true</useBaseDAO>
+		<!-- se "true" genera una pagina di dettaglio per ogni pseudomodel -->
+		<useDetailPage>true</useDetailPage>
+		<!-- se "true" usera' condizioni di EQUAL su PK e FK nelle query, altrimenti usera' condizioni di LIKE -->
+		<useEqualOnQuery>true</useEqualOnQuery>
+		<!-- se "true" genera un collegamento tra core e web tramite web service -->
+		<useWebServices>false</useWebServices>
+		<!-- se "true" utilizzera' l'autenticazione del CAS -->
+		<useCas>false</useCas>
+		<!-- se "true" genera un'interfaccia web basata su AJAX e con jQuery -->
+		<jQueryInterface>true</jQueryInterface>
+		<!-- impostare "true" se il progetto fa uso di job schedulati -->
+		<useScheduler>true</useScheduler>
+		<!-- se "true" indica che il progetto fa uso di uno scheduler esterno, altrimenti usa uno scheduler interno -->
+		<isSchedulerDistributed>true</isSchedulerDistributed>
+		<!-- 
+		Indica la versione di interfaccia da generare. Se state generando un progetto nuovo, va sempre impostato a 3. Le altre due opzioni vengono 
+		mantenute solo per retrocompatibilit?. Valori ammessi:
+		1 - HTML
+		2 - JQuery
+		3 - Angular (fortemente consigliato)
+		-->
+		<interfaceVersion>3</interfaceVersion>
+		<!-- 
+		indica se generare una versione alternativa dei DAO per AS400. Se impostata a true, il codegenerator genera una suite di DAO per 
+		il database standard e una seconda suite di DAO da utilizzare per AS400. Per differenziare le colonne del AS400 verranno utilizzate due
+		nuove annotazioni, @As400Column e @As400Table che potranno definire i nomi alternativi su AS400.
+		ATTENZIONE: questo parametro va impostato a true se volete generare un progetto che abbia un profilo funzionante su As400 e uno su un 
+		altro database variando i nomi delle colonne. Va invece impostato a false negli altri casi, compreso il caso in cui la vostra applicazione
+		sia prevista solo per as400.
+		-->
+		<as400dao>false</as400dao>
+	</properties>
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven.org</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>Nexus - Scope Plugin</id>
+			<url>http://struts2plugin-maven-repo.googlecode.com/svn/trunk</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>releases</id>
+			<url>http://maven.quix.it/nexus/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>snapshots</id>
+			<url>http://maven.quix.it/nexus/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>thirdparty</id>
+			<url>http://maven.quix.it/nexus/content/repositories/thirdparty</url>
+		</repository>
+		<repository>
+			<id>maven-repository.dev.java.net</id>
+			<name>Java.net Maven 1 Repository (legacy)</name>
+			<url>http://download.java.net/maven/1</url>
+			<layout>legacy</layout>
+		</repository>
+		<repository>
+			<id>codehaus.org</id>
+			<name>Codehaus Central Repository</name>
+			<url>http://repository.codehaus.org</url>
+		</repository>
+		<repository>
+			<id>ubuntu.cica.es</id>
+			<name>ubuntu.cica.es Central Repository</name>
+			<url>http://ubuntu.cica.es/mirrors/maven2</url>
+		</repository>
+		<repository>
+			<id>sunsite</id>
+			<name>sunsite</name>
+			<url>http://mirrors.sunsite.dk/maven2</url>
+		</repository>
+		<repository>
+			<id>ibiblio</id>
+			<name>ibiblio</name>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+		</repository>
+		<repository>
+			<id>Eclipse</id>
+			<name>Eclipse</name>
+			<url>http://maven.quix.it/nexus/content/repositories/EclipseLink</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven.org</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>releases</id>
+			<url>http://maven.quix.it/nexus/content/repositories/releases</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>snapshots</id>
+			<url>http://maven.quix.it/nexus/content/repositories/snapshots</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>thirdparty</id>
+			<url>http://maven.quix.it/nexus/content/repositories/thirdparty</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<build>
+		<plugins>
+			 <plugin> 
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+                <artifactId>maven-antrun-plugin</artifactId>
+				<!-- <version>1.2</version> -->
+                <executions>
+               		 <execution>
+						<id>Generate Project</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<tasks>
+								<property name="compile_classpath" refid="maven.compile.classpath" />
+								<property name="runtime_classpath" refid="maven.runtime.classpath" />
+								<property name="test_classpath" refid="maven.test.classpath" />
+								<property name="plugin_classpath" refid="maven.plugin.classpath" />
+
+								<echo message="compile classpath: ${compile_classpath}" />
+								<echo message="runtime classpath: ${runtime_classpath}" />
+								<echo message="test classpath:    ${test_classpath}" />
+								<echo message="plugin classpath:  ${plugin_classpath}" />
+								<echo message="plugin classpath:   ${basedir}/../target/classes" />
+								<javac sourcepath="" srcdir="${basedir}/../src/gen/java" destdir="${basedir}/../target/classes" >
+    								<include name="**/*.java"/>
+    								<classpath>
+							           <pathelement path="${plugin_classpath}"/>
+							           <pathelement path="${compile_classpath}"/>
+							           <pathelement path="${basedir}/../target/classes"/>
+							         </classpath>
+								</javac>	
+								<java classname="it.quix.framework.codegen.launcher.CodeGeneratorLauncher">
+									<sysproperty key="basedir" value="${basedir}"/>
+									<sysproperty key="projectName" value="QBorrow"/>
+									<sysproperty key="groupId" value="it.quix.academy"/>
+									<sysproperty key="artefactId" value="qborrow"/>
+									<sysproperty key="frameworkVersion" value="${framework-version}"/>
+									<sysproperty key="useBaseDAO" value="${useBaseDAO}"/>
+									<sysproperty key="useDetailPage" value="${useDetailPage}"/>
+									<sysproperty key="useEqualOnQuery" value="${useEqualOnQuery}"/>
+									<sysproperty key="useWebServices" value="${useWebServices}"/>
+									<sysproperty key="useCas" value="${useCas}"/>
+									<sysproperty key="jQueryInterface" value="${jQueryInterface}"/>
+									<sysproperty key="useScheduler" value="${useScheduler}"/>
+									<sysproperty key="isSchedulerDistributed" value="${isSchedulerDistributed}"/>
+									<sysproperty key="interfaceVersion" value="${interfaceVersion}"/>
+									<sysproperty key="as400dao" value="${as400dao}"/>
+									<classpath>
+										<pathelement path="${plugin_classpath}"/>
+										<pathelement path="${compile_classpath}"/>
+										<pathelement path="${basedir}/../target/classes"/>
+									</classpath>
+								</java> 
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+                </executions>
+                <dependencies>
+                	<dependency>
+				    	<groupId>sun.jdk</groupId>
+				      	<artifactId>tools</artifactId>
+				      	<version>1.5.0</version>
+				      	<scope>system</scope>
+						<systemPath>${java.home}/../lib/tools.jar</systemPath> 
+				    </dependency> 
+                	 <dependency>
+			            <groupId>antelope</groupId>
+			            <artifactId>antelope</artifactId>
+			            <version>3.5.1</version>
+			        </dependency>
+			        <dependency>
+			            <groupId>it.quix.framework</groupId>
+			            <artifactId>framework-codegenerator</artifactId>
+			            <version>${framework-version}</version>
+			        </dependency>
+                </dependencies>
+            </plugin>
+		</plugins>
+	</build>
+</project>
