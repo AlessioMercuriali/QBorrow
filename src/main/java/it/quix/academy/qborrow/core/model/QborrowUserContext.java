@@ -15,55 +15,54 @@ import it.quix.puma.core.PumaFinderException;
  */
 public class QborrowUserContext extends UserContext {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public QborrowUserContext() {
-		super();
-	}
+    public QborrowUserContext() {
+        super();
+    }
 
-	@Override
-	public Boolean authCodeLogin(String arg0) throws PumaFinderException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Boolean authCodeLogin(String arg0) throws PumaFinderException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public String getCodCompany() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getCodCompany() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public Language getLanguageForSysAttribute() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Language getLanguageForSysAttribute() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public Organization getOrganizationForSysSysAttribute() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Organization getOrganizationForSysSysAttribute() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public void login(String user) throws Exception {
-		final String userId = user;
-		User userMode1 = new User() {
-			
-			public String getPassword() {
-				return null;
-			}
-			
-			public String getName() {
-				return null;
-			}
-			
-			public String getDn() {
-				return null;
-			}
-		}; 
-		super.login(userMode1, new ArrayList<Role>());
-	}
-		
+    @Override
+    public void login(String user) throws Exception {
+        final String userId = user;
+        User userMode1 = new User() {
+
+            public String getPassword() {
+                return null;
+            }
+
+            public String getName() {
+                return null;
+            }
+
+            public String getDn() {
+                return null;
+            }
+        };
+        super.login(userMode1, new ArrayList<Role>());
+    }
+
 }
-

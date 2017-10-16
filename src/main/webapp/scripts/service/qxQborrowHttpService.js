@@ -32,6 +32,38 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         });
         scopeController.promise.success(success).error(_manageError);
     }
+	
+	this.getMieiOggettiList = function(scopeController, form) {
+		_getMieiOggettiList(scopeController, form);
+	}
+	
+	function _getMieiOggettiList(scopeController, form) {
+    	var success = function (data) {
+        	if((typeof data) == 'string') {
+        		// Not Managed Server error
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.error == true) {
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.errors != undefined) {
+        		qxValidationError(data, form, $timeout, scopeController);
+        		scopeController.result = {};
+        	} else {
+        		scopeController.result = data;
+        	}
+        };
+    	
+        scopeController.promise = $http({ 
+        		method: 'POST', 
+        		url: qborrowConfig.baseUrl + '/oggetti.action?task=listMieiOggetti', 
+        		data: quixParamSerializer(scopeController.search, 'oggettiSearch.'), 
+        		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        scopeController.promise.success(success).error(_manageError);
+    }
     
     this.editOggetti = function(scopeController){
     	var success = function (data) {

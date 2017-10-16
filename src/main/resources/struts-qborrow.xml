@@ -32,6 +32,7 @@
 		
 		<action name="oggetti" class="oggettiAction">
 			<result name="mainPage">/pages/Oggetti.jsp</result>
+			<result name="mieiOggetti">/pages/MieiOggetti.jsp</result>
 			<interceptor-ref name="quixStack" >
 				<param name="quixValidationInterceptor.exludeMethods">select</param>
 			</interceptor-ref>

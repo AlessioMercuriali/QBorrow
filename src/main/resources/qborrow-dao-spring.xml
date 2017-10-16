@@ -5,7 +5,7 @@
 
 	<!-- ********************************************* -->
 	<!-- DAOs -->
-	<bean id="oggettiDAO" class="it.quix.academy.qborrow.core.dao.OggettiDAO" >
+	<bean id="oggettiDAO" class="it.quix.academy.qborrow.core.dao.OggettiDAO" init-method="init">
 		<constructor-arg ref="qborrowDataSource" ></constructor-arg>
 	</bean>
 	

@@ -1,8 +1,4 @@
-
-
-
 package it.quix.academy.qborrow;
-
 
 import it.quix.framework.core.manager.ManagerHolder;
 import it.quix.framework.core.model.UserContextHolder;
@@ -26,36 +22,37 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 /**
  * BaseTest for jUnit tests.<br>
  * All jUnit classes should inherit from this class.
+ * 
  * @author Quix CodeGenerator version 03.03.00-SNAPSHOT
  */
 public class BaseTest {
 
- private static Log log = LogFactory.getLog(BaseTest.class);
+    private static Log log = LogFactory.getLog(BaseTest.class);
 
- protected static ApplicationContext applicationContext;
+    protected static ApplicationContext applicationContext;
 
- 	@BeforeClass
-	public static void setUpClass() throws Exception {
-  
-  		try {
-  			String[] contextFileNames = { "qborrow-test-spring.xml" };
-   			log.debug("loading application contexts=" + Arrays.toString(contextFileNames));
-   			applicationContext = new ClassPathXmlApplicationContext(contextFileNames);
-   
-   			QborrowUserContext uc = new QborrowUserContext();
-   			it.quix.framework.core.manager.UserContextHolder.setUserContext(uc);
-   	
-   			ManagerHolder.setManagerOnThreadLocal("qborrowManager", applicationContext.getBean("qborrowManager"));
+    @BeforeClass
+    public static void setUpClass() throws Exception {
 
-  		} catch (Exception ex) {
-   			log.error(ex.getMessage(), ex);
-   			Assert.assertNull(ex);
-  		}
-	}
+        try {
+            String[] contextFileNames = { "qborrow-test-spring.xml" };
+            log.debug("loading application contexts=" + Arrays.toString(contextFileNames));
+            applicationContext = new ClassPathXmlApplicationContext(contextFileNames);
 
- 	@AfterClass
- 	public static void tearDownClass() throws Exception {
-  		applicationContext = null;
- 	}
+            QborrowUserContext uc = new QborrowUserContext();
+            it.quix.framework.core.manager.UserContextHolder.setUserContext(uc);
+
+            ManagerHolder.setManagerOnThreadLocal("qborrowManager", applicationContext.getBean("qborrowManager"));
+
+        } catch (Exception ex) {
+            log.error(ex.getMessage(), ex);
+            Assert.assertNull(ex);
+        }
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+        applicationContext = null;
+    }
 
 }

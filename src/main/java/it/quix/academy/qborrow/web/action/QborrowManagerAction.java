@@ -1,4 +1,3 @@
-
 package it.quix.academy.qborrow.web.action;
 
 import javax.annotation.Resource;
@@ -26,34 +25,34 @@ import java.util.Set;
 
 public abstract class QborrowManagerAction extends QuixActionSupport {
 
-	/**
+    /**
      * Serial Version UID per la serializzazione della classe
      */
-	private static final long serialVersionUID = 1L;
-	
-	/**
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Numero massimo di getCausedBy chiamate per serializzare un eccezione
      */
     private static final int MAX_EXCEPTION_CAUSEDBY = 20;
-    
+
     private static final Log log = LogFactory.getLog(QborrowManagerAction.class);
-	
-	@Resource(name = "configuration")
-	protected Configuration configuration;
-	
-	@Resource(name = "frameworkCoreManager")
+
+    @Resource(name = "configuration")
+    protected Configuration configuration;
+
+    @Resource(name = "frameworkCoreManager")
     protected FrameworkCoreManager frameworkCoreManager;
-		
-	/**
-	 * Metodo non piu' necessario, le validazioni usano il nome del form gestito lato client 
-	 */
-    @Override
-	public String getValidatedBeanName(String arg0) {
-		return null;
-	}
-	 
+
     /**
-     * Questo metodo si occupa di serializzare una eccezione all'interno di una stringa che possa 
+     * Metodo non piu' necessario, le validazioni usano il nome del form gestito lato client
+     */
+    @Override
+    public String getValidatedBeanName(String arg0) {
+        return null;
+    }
+
+    /**
+     * Questo metodo si occupa di serializzare una eccezione all'interno di una stringa che possa
      * essere inclusa in un json di una chiamata AJAX.
      * 
      * @param e
@@ -75,7 +74,7 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
         String string = sb.toString();
         return string;
     }
-    
+
     /**
      * Si occupa di gestire un'eccezione all'interno di una chiamata AJAX. Il metodo si occupa di accodare tra loro tutti i
      * messaggi delle varie eccezioni (recuperate tramite {@link Exception#getCause()}) e di concatenarle fino a un massimo di
@@ -95,7 +94,7 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
     protected String manageException(String message, Exception e) {
         return manageException(message, e, null);
     }
-    
+
     /**
      * Si occupa di gestire un messaggio di errore al client di una chiamata REST
      * 
@@ -110,7 +109,7 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
     protected String manageException(String message) {
         return manageException(message, null, null);
     }
-    
+
     /**
      * Si occupa di gestire un'eccezione all'interno di una chiamata AJAX. Il metodo si occupa di accodare tra loro tutti i
      * messaggi delle varie eccezioni (recuperate tramite {@link Exception#getCause()}) e di concatenarle fino a un massimo di
@@ -132,19 +131,20 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
         log.error(message, e);
         try {
             String charset = ServletActionContext.getResponse().getCharacterEncoding();
-        	String string = "";
-        	if(e != null) {
-	            string = getExceptionParameter(e, message);
-	            try {
-	                String context = ServletActionContext.getRequest().getContextPath();
-	                ExceptionLogUtils.handleDbLogging(e, message, userContext, context, new Date(System.currentTimeMillis()), frameworkCoreManager, additionalData);
-	            } catch (Exception e2) {
-	                log.warn("Error on log exception on database", e);
-	            }
-        	} else {
-        		string = message;
-        	}
-        	string = StringEscapeUtils.escapeJson(string);
+            String string = "";
+            if (e != null) {
+                string = getExceptionParameter(e, message);
+                try {
+                    String context = ServletActionContext.getRequest().getContextPath();
+                    ExceptionLogUtils.handleDbLogging(e, message, userContext, context, new Date(System.currentTimeMillis()), frameworkCoreManager,
+                        additionalData);
+                } catch (Exception e2) {
+                    log.warn("Error on log exception on database", e);
+                }
+            } else {
+                string = message;
+            }
+            string = StringEscapeUtils.escapeJson(string);
             return sendAjaxResponseToClient("{\"error\": true, \"message\": \"" + string + "\"}", charset);
         } catch (UnsupportedEncodingException e1) {
             log.fatal("Error on write JSON message on response. Check log for details!", e1);
@@ -185,7 +185,7 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
         return sendAjaxResponseToClient(jsonString, charset);
     }
 
-  	/**
+    /**
      * Questo metodo si occupa di serializzare un oggetto generico in JSON e inviarlo al client con l'opportuno charser.
      * Attenzione, questo metodo utilizza la serialize quindi non va chiamato se l'oggetto di ritorno ? o contiene delle proprieta'
      * multiple.
@@ -227,55 +227,57 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
         String charset = ServletActionContext.getResponse().getCharacterEncoding();
         return sendAjaxResponseToClient("{\"error\": false, \"message\": \"OK\"}", charset);
     }
-		
-	/**
-     * Questo metodo si occupa di serializzare una serie di errori di validazione all'interno di un json e 
+
+    /**
+     * Questo metodo si occupa di serializzare una serie di errori di validazione all'interno di un json e
      * restituire la risposta al client
+     * 
      * @param ics
      * @param task
      * @return
      */
     protected String manageValidationError(Set<InvalidConstraint<?>> ics, String task) {
-    	Map<String, Object> manageValidationErrorObject = manageValidationErrorObject(ics, task);
-    	try {
-        	return manageDeepSerialize(manageValidationErrorObject);
-         } catch (UnsupportedEncodingException e1) {
+        Map<String, Object> manageValidationErrorObject = manageValidationErrorObject(ics, task);
+        try {
+            return manageDeepSerialize(manageValidationErrorObject);
+        } catch (UnsupportedEncodingException e1) {
             log.fatal("Error on write JSON message on response. ", e1);
             return null;
         }
     }
-    
+
     /**
      * Questo metodo si occupa di preparare un oggetto con gli errori di validazione pronto per essere serializzato
      * in json. E' utile quando si vogliono restituire, oltre agli errori di validazione anche altri dati.
+     * 
      * @param ics
      * @param task
      * @return
      */
     protected Map<String, Object> manageValidationErrorObject(Set<InvalidConstraint<?>> ics, String task) {
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("error", false);
-    	map.put("message", "KO");
-    	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-    	for (InvalidConstraint<?> ic : ics) {
-			String property = ic.getPropertyPath();
-			if(property.startsWith(".")) {
-				property = property.substring(1);
-			}
-			String message = ic.getMessage();
-			if(message.startsWith("error.")) {
-				message = message.substring(6);
-			}
-			//message = getText(message);
-			Map<String, Object> m = new HashMap<String, Object>();
-			m.put("property", property);
-			m.put("message", message);
-			list.add(m);
-    	}
-    	map.put("errors", list);
-    	return map;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("error", false);
+        map.put("message", "KO");
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        for (InvalidConstraint<?> ic : ics) {
+            String property = ic.getPropertyPath();
+            if (property.startsWith(".")) {
+                property = property.substring(1);
+            }
+            String message = ic.getMessage();
+            if (message.startsWith("error.")) {
+                message = message.substring(6);
+            }
+            // message = getText(message);
+            Map<String, Object> m = new HashMap<String, Object>();
+            m.put("property", property);
+            m.put("message", message);
+            list.add(m);
+        }
+        map.put("errors", list);
+        return map;
     }
-    
+
     /**
      * Questo metodo si occuppa di fornire la risposta di "KO" standard al client
      * 
@@ -293,18 +295,18 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
 
     public void setFrameworkCoreManager(FrameworkCoreManager frameworkCoreManager) {
         this.frameworkCoreManager = frameworkCoreManager;
-    }	
-		
-	public QborrowUserContext getUserContext() {
-		return (QborrowUserContext) super.getUserContext();
-	}
-	
-	public Configuration getConfiguration() {
-		return configuration;
-	}
+    }
 
-	public void setConfiguration(Configuration configuration) {
-		this.configuration = configuration;
-	}
+    public QborrowUserContext getUserContext() {
+        return (QborrowUserContext) super.getUserContext();
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
 
 }

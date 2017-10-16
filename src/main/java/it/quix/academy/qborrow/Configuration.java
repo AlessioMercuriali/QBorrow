@@ -2,89 +2,86 @@ package it.quix.academy.qborrow;
 
 public class Configuration {
 
-	private int rowPerPage;
-	
-	private String urlApplication;
-	
-	private String urlWsdl;
-	
-	private int graphicVersion;
-	
-	/**
-	 * Year used to fill in the fields of type "time of last modification of record"
-	 */
-	private int baseYearForLastUpdateTimeColumn;
-	
-	/**
-	 * Month used to fill in the fields of type "time of last modification of record"
-	 */
-	private int baseMonthForLastUpdateTimeColumn;
-	
-	/**
-	 * Day used to fill in the fields of type "time of last modification of record"
-	 */
-	private int baseDayForLastUpdateTimeColumn;
-	
-	 
-	public Configuration(){
-		super();
-	}
-	
-	public int getRowPerPage() {
-		return rowPerPage;
-	}
+    private int rowPerPage;
 
-	public void setRowPerPage(int rowPerPage) {
-		this.rowPerPage = rowPerPage;
-	}
+    private String urlApplication;
 
-	public String getUrlApplication() {
-		return urlApplication;
-	}
+    private String urlWsdl;
 
-	public void setUrlApplication(String urlApplication) {
-		this.urlApplication = urlApplication;
-	}
-	
-	public String getUrlWsdl() {
-		return urlWsdl;
-	}
+    private int graphicVersion;
 
-	public void setUrlWsdl(String urlWsdl) {
-		this.urlWsdl = urlWsdl;
-	}
+    /**
+     * Year used to fill in the fields of type "time of last modification of record"
+     */
+    private int baseYearForLastUpdateTimeColumn;
 
-	public int getBaseYearForLastUpdateTimeColumn() {
-		return baseYearForLastUpdateTimeColumn;
-	}
+    /**
+     * Month used to fill in the fields of type "time of last modification of record"
+     */
+    private int baseMonthForLastUpdateTimeColumn;
 
-	public void setBaseYearForLastUpdateTimeColumn(
-			int baseYearForLastUpdateTimeColumn) {
-		this.baseYearForLastUpdateTimeColumn = baseYearForLastUpdateTimeColumn;
-	}
+    /**
+     * Day used to fill in the fields of type "time of last modification of record"
+     */
+    private int baseDayForLastUpdateTimeColumn;
 
-	public int getBaseMonthForLastUpdateTimeColumn() {
-		return baseMonthForLastUpdateTimeColumn;
-	}
+    public Configuration() {
+        super();
+    }
 
-	public void setBaseMonthForLastUpdateTimeColumn(
-			int baseMonthForLastUpdateTimeColumn) {
-		this.baseMonthForLastUpdateTimeColumn = baseMonthForLastUpdateTimeColumn;
-	}
+    public int getRowPerPage() {
+        return rowPerPage;
+    }
 
-	public int getBaseDayForLastUpdateTimeColumn() {
-		return baseDayForLastUpdateTimeColumn;
-	}
+    public void setRowPerPage(int rowPerPage) {
+        this.rowPerPage = rowPerPage;
+    }
 
-	public void setBaseDayForLastUpdateTimeColumn(int baseDayForLastUpdateTimeColumn) {
-		this.baseDayForLastUpdateTimeColumn = baseDayForLastUpdateTimeColumn;
-	}
+    public String getUrlApplication() {
+        return urlApplication;
+    }
 
-	public int getGraphicVersion() {
-		return graphicVersion;
-	}
+    public void setUrlApplication(String urlApplication) {
+        this.urlApplication = urlApplication;
+    }
 
-	public void setGraphicVersion(int graphicVersion) {
-		this.graphicVersion = graphicVersion;
-	}
+    public String getUrlWsdl() {
+        return urlWsdl;
+    }
+
+    public void setUrlWsdl(String urlWsdl) {
+        this.urlWsdl = urlWsdl;
+    }
+
+    public int getBaseYearForLastUpdateTimeColumn() {
+        return baseYearForLastUpdateTimeColumn;
+    }
+
+    public void setBaseYearForLastUpdateTimeColumn(int baseYearForLastUpdateTimeColumn) {
+        this.baseYearForLastUpdateTimeColumn = baseYearForLastUpdateTimeColumn;
+    }
+
+    public int getBaseMonthForLastUpdateTimeColumn() {
+        return baseMonthForLastUpdateTimeColumn;
+    }
+
+    public void setBaseMonthForLastUpdateTimeColumn(int baseMonthForLastUpdateTimeColumn) {
+        this.baseMonthForLastUpdateTimeColumn = baseMonthForLastUpdateTimeColumn;
+    }
+
+    public int getBaseDayForLastUpdateTimeColumn() {
+        return baseDayForLastUpdateTimeColumn;
+    }
+
+    public void setBaseDayForLastUpdateTimeColumn(int baseDayForLastUpdateTimeColumn) {
+        this.baseDayForLastUpdateTimeColumn = baseDayForLastUpdateTimeColumn;
+    }
+
+    public int getGraphicVersion() {
+        return graphicVersion;
+    }
+
+    public void setGraphicVersion(int graphicVersion) {
+        this.graphicVersion = graphicVersion;
+    }
 }

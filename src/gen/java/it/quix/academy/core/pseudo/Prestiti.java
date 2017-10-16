@@ -42,4 +42,22 @@ public class Prestiti{
 	@JoinColumn(name = "oggetto_prestato")
 	@QgSearchField
 	public Oggetti oggetti;
+
+	public Date getData_prestito() {
+		return data_prestito;
+	}
+
+	public void setData_prestito(Date data_prestito) {
+		this.data_prestito = data_prestito;
+	}
+
+	public Date getScadenza_prestito() {
+		return scadenza_prestito;
+	}
+
+	public void setScadenza_prestito(Date scadenza_prestito) {
+		this.scadenza_prestito = scadenza_prestito;
+	}
+	
+	
 }
