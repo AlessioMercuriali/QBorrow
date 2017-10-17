@@ -39,7 +39,7 @@ public abstract class OggettiAbstractDAO extends AbstractJDBCDAO {
 
     private static final Log log = LogFactory.getLog(OggettiAbstractDAO.class);
 
-    @Resource(name = "qborrowManager") 
+    @Resource(name = "qborrowManager")
     protected QborrowManager qborrowManager;
 
     @Resource(name = "configuration")

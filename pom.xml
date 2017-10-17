@@ -20,8 +20,46 @@
 		<framework-version>03.03.00-SNAPSHOT</framework-version>
 		<struts-version>2.3.32</struts-version>
 		<spring-version>4.2.4.RELEASE</spring-version>
+		<jaxws.version>2.3.0</jaxws.version>
+		<cxf.version>3.2.0</cxf.version>
+		<jersey2.version>2.19</jersey2.version>
+		<jaxrs.version>2.0.1</jaxrs.version>
+		
 	</properties>
 	<dependencies>
+		<!-- JAX-WS -->
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>${jaxws.version}</version>
+		</dependency>
+		<!-- JAX-RS -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>${jaxrs.version}</version>
+		</dependency>
+		<!-- Jersey 2.19 -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${jersey2.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -250,6 +288,57 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-java2ws-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-simple</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>process-classes</id>
+						<phase>process-classes</phase>
+						<configuration>
+							<className>it.quix.academy.qborrow.web.ws.TestWs</className>
+							<genWsdl>true</genWsdl>
+							<verbose>true</verbose>
+						</configuration>
+						<goals>
+							<goal>java2ws</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>1.12</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
+							<packageName>it.quix.experis.quixacademy.generate.ws</packageName>
+							<keep>true</keep>
+							<sourceDestDir>${basedir}/target/generated/src/main/java</sourceDestDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<!--
 			<plugin>
 	            <groupId>org.codehaus.mojo</groupId>
@@ -382,6 +471,8 @@
 					</configuration>
 				</plugin>
 			</plugins>
+			
+			
 		</pluginManagement>
 	</build>
 	<reporting>
@@ -422,6 +513,10 @@
 					</formats>
 				</configuration>
 			</plugin>
+			
+			
+			
+			
 		</plugins>
 	</reporting>
 	<profiles>

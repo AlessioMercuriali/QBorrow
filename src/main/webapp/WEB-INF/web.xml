@@ -70,7 +70,7 @@
 	<servlet>
 		<servlet-name>InitServlet</servlet-name>
 		<servlet-class>it.quix.framework.web.servlet.InitServlet</servlet-class>
-		<load-on-startup>5</load-on-startup> 
+		<load-on-startup>5</load-on-startup>
 	</servlet>
 
 
@@ -79,5 +79,20 @@
 		<servlet-name>InitServlet</servlet-name>
 		<url-pattern>/InitServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+             <param-name>jersey.config.server.provider.packages</param-name>
+             <param-value>it.quix.academy.qborrow.web.rs</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+   
+    <servlet-mapping>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 
 </web-app>

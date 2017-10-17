@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<tns:qborrow xmlns:tns="http://www.qborrow.org/prova" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.qborrow.org/prova prova.xsd">
+		
+		<tns:oggetto>
+			<tns:id>ID</tns:id>
+		</tns:oggetto>
+		
+		<tns:soggetto>
+			<tns:username>USERNAME</tns:username>
+		</tns:soggetto>
+		
+		<tns:prestito>
+			<tns:beneficiario>BENEFICIARIO</tns:beneficiario>
+			<tns:oggetto_prestato>OGGETTO_PRESTATO</tns:oggetto_prestato>
+		</tns:prestito>
+		
+	</tns:qborrow>
+	
+	
