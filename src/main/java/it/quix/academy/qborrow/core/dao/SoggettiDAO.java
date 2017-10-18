@@ -34,59 +34,57 @@ public class SoggettiDAO extends SoggettiAbstractDAO {
             log.debug("SoggettiDAO initialized!");
         }
     }
-    
-    
-    
-    public Soggetti getConDataCompleanno(String username) throws DAOFinderException{
-    	 Connection connection = null;
-         PreparedStatement statement = null;
-         ResultSet rs = null;
-         try {
-             // Compose the select query
-             StringBuilder query = new StringBuilder(EOL);
-             query.append("SELECT * FROM soggetti ").append(EOL);
-             query.append("WHERE USERNAME = ?  ").append(EOL);
-             // Query logging
-             if (queryLog.isInfoEnabled()) {
-                 queryLog.info(query);
-             }
-             // Get connection
-             connection = getConnection();
-             // Prepare the statement
-             statement = connection.prepareStatement(query.toString());
-             // Set the parameters
-             int p = 1;
-             // Set the primary key
-             super.setParameterString(statement, p++, username);
 
-             // Execute the query
-             long startTime = System.currentTimeMillis();
-             rs = statement.executeQuery();
-             long endTime = System.currentTimeMillis();
-             long time = endTime - startTime;
-             String msgTime = FrameworkStringUtils.concat("Query time: ", time);
-             if (queryLog.isDebugEnabled()) {
-                 queryLog.debug(msgTime);
-             }
-             if (rs.next()) {
-                 Soggetti soggettiModel = buildModelFromResultSetConDataCompleanno(rs);
-                 return soggettiModel;
-             }
-             throw new DAOFinderException(FrameworkStringUtils.concat("Cannot find Soggetti on database with [username = ", username, "]"));
+    public Soggetti getConDataCompleanno(String username) throws DAOFinderException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        try {
+            // Compose the select query
+            StringBuilder query = new StringBuilder(EOL);
+            query.append("SELECT * FROM soggetti ").append(EOL);
+            query.append("WHERE USERNAME = ?  ").append(EOL);
+            // Query logging
+            if (queryLog.isInfoEnabled()) {
+                queryLog.info(query);
+            }
+            // Get connection
+            connection = getConnection();
+            // Prepare the statement
+            statement = connection.prepareStatement(query.toString());
+            // Set the parameters
+            int p = 1;
+            // Set the primary key
+            super.setParameterString(statement, p++, username);
 
-         } catch (SQLException ex) {
-             String msg = FrameworkStringUtils.concat("Error on method get(String username) for Soggetti on database with [username = ", username, "]");
-             if (log.isErrorEnabled()) {
-                 log.error(msg);
-             }
-             throw new SystemException(msg, ex);
-         } finally {
-             closeResultSet(rs);
-             closeStatement(statement);
-             closeConnection(connection);
-         }
+            // Execute the query
+            long startTime = System.currentTimeMillis();
+            rs = statement.executeQuery();
+            long endTime = System.currentTimeMillis();
+            long time = endTime - startTime;
+            String msgTime = FrameworkStringUtils.concat("Query time: ", time);
+            if (queryLog.isDebugEnabled()) {
+                queryLog.debug(msgTime);
+            }
+            if (rs.next()) {
+                Soggetti soggettiModel = buildModelFromResultSetConDataCompleanno(rs);
+                return soggettiModel;
+            }
+            throw new DAOFinderException(FrameworkStringUtils.concat("Cannot find Soggetti on database with [username = ", username, "]"));
+
+        } catch (SQLException ex) {
+            String msg = FrameworkStringUtils.concat("Error on method get(String username) for Soggetti on database with [username = ", username, "]");
+            if (log.isErrorEnabled()) {
+                log.error(msg);
+            }
+            throw new SystemException(msg, ex);
+        } finally {
+            closeResultSet(rs);
+            closeStatement(statement);
+            closeConnection(connection);
+        }
     }
-    
+
     protected Soggetti buildModelFromResultSetConDataCompleanno(ResultSet rs) throws SQLException {
         return buildModelFromResultSetConDataCompleanno(rs, qborrowManager);
     }
@@ -117,5 +115,4 @@ public class SoggettiDAO extends SoggettiAbstractDAO {
         return soggetti;
     }
 
-    
 }

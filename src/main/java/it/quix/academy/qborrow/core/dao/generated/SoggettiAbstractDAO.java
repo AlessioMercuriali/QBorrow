@@ -185,15 +185,16 @@ public abstract class SoggettiAbstractDAO extends AbstractJDBCDAO {
             closeConnection(connection);
         }
     }
-    
-    public void updateSoggettiConDataCompleannoAnnoPari (Soggetti soggetti) throws DAOStoreException{
+
+    public void updateSoggettiConDataCompleannoAnnoPari(Soggetti soggetti) throws DAOStoreException {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             // Compose the update query
             StringBuilder query = new StringBuilder(EOL);
             query.append(" UPDATE soggetti SET ").append(EOL);
-            query.append(" email = ? , ragione_sociale = ? , nome = ? , cognome = ? , immagine = ? , data_ultima_modifica = ? , data_compleanno = ? ").append(EOL);
+            query.append(" email = ? , ragione_sociale = ? , nome = ? , cognome = ? , immagine = ? , data_ultima_modifica = ? , data_compleanno = ? ").append(
+                EOL);
             query.append("  WHERE username = ? ").append(EOL);
             query.append(" AND mod(date_format(data_compleanno, '%y'), 2) = 1").append(EOL);
 
@@ -216,8 +217,8 @@ public abstract class SoggettiAbstractDAO extends AbstractJDBCDAO {
             super.setParameterString(statement, p++, soggetti.getNome());
             super.setParameterString(statement, p++, soggetti.getCognome());
             super.setParameterString(statement, p++, soggetti.getImmagine());
-            super.setParameterDateTime(statement, p++, soggetti.getData_ultima_modifica()); 
-            super.setParameterDateTime(statement, p++, soggetti.getData_compleanno()); 
+            super.setParameterDateTime(statement, p++, soggetti.getData_ultima_modifica());
+            super.setParameterDateTime(statement, p++, soggetti.getData_compleanno());
 
             // Set the primary key
             super.setParameterString(statement, p++, soggetti.getUsername());

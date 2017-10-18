@@ -51,9 +51,9 @@ public class SoggettiManagerAction extends SoggettiAbstractManagerAction {
      * Log
      */
     private static Log log = LogFactory.getLog(SoggettiManagerAction.class);
-    
+
     public String editConDataCompleanno() {
-    	
+
         Map<String, Object> resultMap = new HashMap<String, Object>();
         try {
             Soggetti soggetti = getQborrowManager().getSoggettiConDataCompleanno(getSoggetti().getUsername());
@@ -62,7 +62,7 @@ public class SoggettiManagerAction extends SoggettiAbstractManagerAction {
             return manageException("Error on edit Soggetti", e);
         }
     }
-    
+
     public String saveSoggettiConDataCompleanno() {
         if (getSoggetti() == null) {
             // New Soggetti and all fields are empty. Create a new empty Soggetti to avoid NPE on validators.

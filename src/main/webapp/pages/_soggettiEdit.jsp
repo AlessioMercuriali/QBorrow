@@ -181,7 +181,7 @@
 						  	</ul>
 						</div>
 					
-					<div ng-messages="forms.soggettiEditForm.data_ultima_modifica.$error" role="alert">
+					<div ng-messages="forms.soggettiEditForm.data_compleanno.$error" role="alert">
 					  	<div ng-message="notNull"><s:text name="error.notNull"/></div>
 					  	<div ng-message="invalidAK"><s:text name="error.invalidAK"/></div>
 					  	<div ng-message="notValid"><s:text name="error.notValid"/></div>
@@ -196,6 +196,8 @@
 					  	<div ng-message="notBlank"><s:text name="error.notBlank"/></div>
 					  	<div ng-message="qvpattern.message"><s:text name="error.qvpattern.message"/></div>
 					  	<div ng-message="string.length"><s:text name="error.string.length"/></div>
+					  	<div ng-message="dataCompleannoMinorenne"><s:text name="error.dataCompleannoMinorenne"/></div>
+					  	<div ng-message="dataCompleannoFutura"><s:text name="error.dataCompleannoFutura"/></div>
 					</div>
 				</div>
 			</div>

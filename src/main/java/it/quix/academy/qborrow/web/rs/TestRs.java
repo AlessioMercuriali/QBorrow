@@ -1,6 +1,5 @@
 package it.quix.academy.qborrow.web.rs;
 
-
 import it.quix.academy.qborrow.core.manager.QborrowException;
 import it.quix.academy.qborrow.core.manager.QborrowManager;
 import it.quix.academy.qborrow.core.model.Oggetti;
@@ -25,41 +24,38 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.context.ApplicationContext;
 
-
-
-
 @Path("/oggetti")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-
 public class TestRs {
-	@Resource(name = "qborrowManager")
-	protected QborrowManager qborrowManager;
-	
-	@GET
-	public Response getOggetti(){
-		List<Oggetti> array = new ArrayList<Oggetti>();
-		array = qborrowManager.getOggettiList(null);
-		return Response.ok(array, MediaType.APPLICATION_JSON).build();
-	}
-	
-	@POST
-	public Oggetti PostOggetto(Oggetti oggetto) throws QborrowException, ValidationException{
-		Oggetti ogg = new Oggetti();
-		ogg.setId(88);
-		ogg.setTitolo("PROVA");
-		return ogg;
-	}
-	
-	@PUT
-	public Oggetti putOggetto(Oggetti oggetto){
-		//UPDATE DB
-		return oggetto;
-	}
-	
-	@DELETE
-	@Path("/id")
-	public Response deleteOggetti(@PathParam("id") Integer id){
-		return Response.status(Response.Status.NOT_FOUND).build();
-	}
+
+    @Resource(name = "qborrowManager")
+    protected QborrowManager qborrowManager;
+
+    @GET
+    public Response getOggetti() {
+        List<Oggetti> array = new ArrayList<Oggetti>();
+        array = qborrowManager.getOggettiList(null);
+        return Response.ok(array, MediaType.APPLICATION_JSON).build();
+    }
+
+    @POST
+    public Oggetti PostOggetto(Oggetti oggetto) throws QborrowException, ValidationException {
+        Oggetti ogg = new Oggetti();
+        ogg.setId(88);
+        ogg.setTitolo("PROVA");
+        return ogg;
+    }
+
+    @PUT
+    public Oggetti putOggetto(Oggetti oggetto) {
+        // UPDATE DB
+        return oggetto;
+    }
+
+    @DELETE
+    @Path("/id")
+    public Response deleteOggetti(@PathParam("id") Integer id) {
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
 }
