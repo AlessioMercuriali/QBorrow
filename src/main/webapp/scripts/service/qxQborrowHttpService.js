@@ -303,6 +303,30 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         scopeController.promise.success(success).error(_manageError);
     }
     
+    this.editConDataCompleanno = function(scopeController){
+    	var success = function (data) {
+        	if((typeof data) == 'string') {
+        		// Not Managed Server error
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.error == true) {
+        		_manageError(data, 0);
+        		return;
+        	}
+        	scopeController.selectedRow = data;
+        	scopeController.selectedPage = "edit";
+        };
+    	
+        scopeController.promise = $http({ 
+        		method: 'POST', 
+        		url: qborrowConfig.baseUrl + '/soggetti.action?task=editConDataCompleanno', 
+        		data: quixParamSerializer(scopeController.selectedRow, 'soggetti.'), 
+        		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        scopeController.promise.success(success).error(_manageError);
+    }
+    
      this.deleteSoggetti = function(scopeController, labelService){
     	var success = function (data) {
         	if((typeof data) == 'string') {
@@ -348,6 +372,33 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         scopeController.promise = $http({ 
         		method: 'POST', 
         		url: qborrowConfig.baseUrl + '/soggetti.action?task=save&reset=true', 
+        		data: quixParamSerializer(scopeController.selectedRow, 'soggetti.'), 
+        		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        scopeController.promise.success(success).error(_manageError);
+    }
+    
+    this.saveSoggettiConDataCompleanno = function(scopeController, form) {
+    	var success = function (data) {
+        	if((typeof data) == 'string') {
+        		// Not Managed Server error
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.error == true) {
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.errors != undefined) {
+        		qxValidationError(data, form, $timeout, scopeController);
+        	} else {
+        		_getSoggettiList(scopeController, null);
+        		scopeController.selectedPage = 'list';
+        	}
+        };
+        scopeController.promise = $http({ 
+        		method: 'POST', 
+        		url: qborrowConfig.baseUrl + '/soggetti.action?task=saveSoggettiConDataCompleanno&reset=true', 
         		data: quixParamSerializer(scopeController.selectedRow, 'soggetti.'), 
         		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });

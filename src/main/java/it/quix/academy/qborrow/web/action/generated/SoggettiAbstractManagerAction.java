@@ -1,48 +1,28 @@
 package it.quix.academy.qborrow.web.action.generated;
 
-import java.util.HashSet;
+import flexjson.JSONSerializer;
+import it.quix.academy.qborrow.core.manager.QborrowException;
+import it.quix.academy.qborrow.core.manager.QborrowManager;
+import it.quix.academy.qborrow.core.model.Soggetti;
+import it.quix.academy.qborrow.core.search.SoggettiSearch;
+// import it.quix.academy.qborrow.core.handler.SoggettiHandler;
+import it.quix.academy.qborrow.web.action.QborrowManagerAction;
+import it.quix.framework.core.composer.ExcelComposer;
+import it.quix.framework.core.handler.SysAttributeHandler;
+import it.quix.framework.core.validation.exception.ValidationException;
+
+import java.io.File;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.Set;
-import java.io.IOException;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.awt.Color;
-import java.awt.Font;
-
-import org.zefer.pd4ml.PD4ML;
-import org.zefer.pd4ml.PD4PageMark;
 
 import javax.annotation.Resource;
-import it.quix.framework.core.composer.ExcelComposer;
-import it.quix.framework.core.exception.DAOFinderException;
-import it.quix.framework.core.handler.SysAttributeHandler;
-import it.quix.framework.core.model.AttributeView;
-import it.quix.framework.core.validation.InvalidConstraintImpl;
-import it.quix.framework.core.validation.api.InvalidConstraint;
-import it.quix.framework.core.validation.exception.ValidationException;
-import it.quix.academy.qborrow.core.model.Soggetti;
-import it.quix.academy.qborrow.core.model.*;
-import it.quix.academy.qborrow.core.search.SoggettiSearch;
-import it.quix.academy.qborrow.core.manager.QborrowManager;
-import it.quix.academy.qborrow.core.manager.QborrowException;
-// import it.quix.academy.qborrow.core.handler.SoggettiHandler;
-import it.quix.academy.qborrow.web.action.QborrowManagerAction;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
-import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
-
-import java.util.Date;
-import java.lang.reflect.Field;
-import java.math.*;
 
 /**
  * Action class for the Soggetti model.

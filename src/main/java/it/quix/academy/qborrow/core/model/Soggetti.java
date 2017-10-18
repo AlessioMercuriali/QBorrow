@@ -135,6 +135,11 @@ public class Soggetti extends QborrowAbstractModel implements Serializable {
     @QcDateTimeType()
     @QrExcelColumn(order = 0)
     private Date data_ultima_modifica;
+    
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    @QcDateTimeType()
+    private Date data_compleanno;
 
     /**
 	 */
@@ -242,11 +247,13 @@ public class Soggetti extends QborrowAbstractModel implements Serializable {
         sb.append(", ").append("immagine=").append(immagine);
 
         sb.append(", ").append("data_ultima_modifica=").append(data_ultima_modifica);
+        
+        sb.append(", ").append("data_compleanno=").append(data_compleanno);
 
         sb.append(", ").append("oggetti=").append(oggetti);
 
         sb.append(", ").append("prestiti=").append(prestiti);
-
+        
         sb.append(")");
         return sb.toString();
     }
@@ -491,7 +498,7 @@ public class Soggetti extends QborrowAbstractModel implements Serializable {
         return data_ultima_modifica;
     }
 
-    /**
+	/**
      * <br>
      * 
      * @param data_ultima_modifica
@@ -500,6 +507,14 @@ public class Soggetti extends QborrowAbstractModel implements Serializable {
     public void setData_ultima_modifica(Date data_ultima_modifica) {
         this.data_ultima_modifica = data_ultima_modifica;
     }
+
+    public Date getData_compleanno() {
+		return data_compleanno;
+	}
+
+	public void setData_compleanno(Date data_compleanno) {
+		this.data_compleanno = data_compleanno;
+	}
 
     /**
      * <br>

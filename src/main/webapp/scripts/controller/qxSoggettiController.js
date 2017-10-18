@@ -38,6 +38,11 @@ qborrowApp.controller('qxSoggettiController', ['$scope', 'qxQborrowHttpService',
 		qxQborrowHttpService.editSoggetti($scope.scopeController);
 	}
 	
+	$scope.editConDataCompleanno = function(row){
+		$scope.scopeController.selectedRow = row;
+		qxQborrowHttpService.editConDataCompleanno($scope.scopeController);
+	}
+	
 	$scope.exportXLS = function() {
 		document.location.href =  qborrowConfig.baseUrl + '/soggetti.action?task=exportXls&reset=true&' + quixParamSerializer($scope.scopeController.search, 'soggettiSearch.');
 	}
@@ -73,6 +78,10 @@ qborrowApp.controller('qxSoggettiController', ['$scope', 'qxQborrowHttpService',
 	
 	$scope.save = function(row){
 		qxQborrowHttpService.saveSoggetti($scope.scopeController, $scope.forms.soggettiEditForm);
+	}
+	
+	$scope.saveSoggettiConDataCompleanno = function(row){
+		qxQborrowHttpService.saveSoggettiConDataCompleanno($scope.scopeController, $scope.forms.soggettiEditForm);
 	}
 	
 	$scope.resetSearch = function () {

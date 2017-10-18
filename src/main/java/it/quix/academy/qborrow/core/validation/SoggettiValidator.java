@@ -1,5 +1,6 @@
 package it.quix.academy.qborrow.core.validation;
 
+import java.util.Calendar;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -8,8 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import it.quix.framework.core.model.UserContext;
 import it.quix.framework.core.validation.api.InvalidConstraint;
 import it.quix.framework.core.validation.InvalidConstraintImpl;
-
 import it.quix.academy.qborrow.core.model.Soggetti;
+import it.quix.academy.qborrow.core.search.SoggettiSearch;
 
 /**
  * Validator for the Soggetti object.
@@ -36,8 +37,32 @@ public class SoggettiValidator extends QborrowAbstractValidator<Soggetti> {
     protected void customValidation(UserContext userContext, Set<InvalidConstraint<?>> errors, String propertyPath, Soggetti soggetti, String... groups) {
         if (log.isDebugEnabled()) {
             log.debug("Call customValidation method for class SoggettiValidator ");
+        } 
+        Calendar now = Calendar.getInstance();
+        
+        Calendar compleanno = Calendar.getInstance();
+        compleanno.setTime(soggetti.getData_compleanno());
+        
+        
+        int year = now.get(Calendar.YEAR);
+        int annoCompl = compleanno.get(Calendar.YEAR);
+        int maggiorenne = year - annoCompl;
+        if (maggiorenne < 18) {
+            InvalidConstraint<Soggetti> ic1 = new InvalidConstraintImpl<Soggetti>(Soggetti.class, "error.notValid", propertyPath + "data_ultima_modificaFrom", soggetti, soggetti.getData_compleanno());
+            InvalidConstraint<Soggetti> ic2 =
+                new InvalidConstraintImpl<Soggetti>(Soggetti.class, "error.notValid", propertyPath + "data_compleanno",
+                    soggetti, soggetti.getData_compleanno());
+            errors.add(ic1);
+            errors.add(ic2);
         }
-
+	    if (soggetti.getData_compleanno().after(now.getTime())) {
+	        InvalidConstraint<Soggetti> ic1 = new InvalidConstraintImpl<Soggetti>(Soggetti.class, "error.dateToBeforeDateFrom", propertyPath + "data_ultima_modificaFrom", soggetti, soggetti.getData_compleanno());
+	        InvalidConstraint<Soggetti> ic2 =
+	            new InvalidConstraintImpl<Soggetti>(Soggetti.class, "error.notValid", propertyPath + "data_compleanno",
+	                soggetti, soggetti.getData_compleanno());
+	        errors.add(ic1);
+	        errors.add(ic2);
+	    }
         // insert here custom validations for Soggetti model
         // after a validation check fail create a new InvalidContraint of the validated type
         // and instantiate an InvalidContraintImpl of the validated type with the error information, es:

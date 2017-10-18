@@ -237,6 +237,7 @@
 					<th class="qtext-left"><s:text name="soggetti.list.cognome"/></th>
 					<th class="qtext-left"><s:text name="soggetti.list.immagine"/></th>
 					<th class="qtext-center"><s:text name="soggetti.list.data_ultima_modifica"/></th>
+					<th class="qtext-center"><s:text name="soggetti.list.data_compleanno"/></th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -249,9 +250,10 @@
 					<td>{{ row.cognome }}</td>
 					<td>{{ row.immagine }}</td>
 					<td class="qtext-center" nowrap="nowrap">{{ row.data_ultima_modifica  | date:"<s:text name="format.date3" />" }}</td>
+					<td>{{ row.data_compleanno }}</td>
 					<td class="qtext-right">
 						<div class="qbtn-group" ng-hide="popup">
-		                  	<button class="qbtn btn-framework-color" ng-click="edit(row)" type="button"><i class="fa fa-pencil"></i>&nbsp;<s:text name="button.edit" /></button>
+		                  	<button class="qbtn btn-framework-color" ng-click="editConDataCompleanno(row)" type="button"><i class="fa fa-pencil"></i>&nbsp;<s:text name="button.edit" /></button>
 		                   	<button data-toggle="qdropdown" class="qbtn btn-framework-color qdropdown-toggle" type="button" aria-expanded="false">
 		                       	<span class="qcaret"></span>
 		                       	<span class="qsr-only"></span>
