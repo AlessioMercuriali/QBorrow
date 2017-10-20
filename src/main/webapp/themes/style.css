@@ -1,0 +1,180 @@
+/* QBorrow styles */
+
+@font-face {
+    font-family: 'opensansregular';
+    src: url('../fonts/OpenSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensansregular';
+    src: url('../fonts/OpenSans-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensansregular';
+    src: url('../fonts/OpenSans-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'titillium';
+    src: url('../fonts/TitilliumWeb-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'titillium';
+    src: url('../fonts/TitilliumWeb-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'titillium';
+    src: url('../fonts/TitilliumWeb-Light.ttf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+body {
+	font-family: 'opensansregular';	
+	font-weight: bold;
+}
+
+body h1 , 
+body h2 , 
+body h3 ,
+body h4 , 
+body h5 , 
+body h6 {
+	font-family: 'titillium';	
+	font-weight: 100;
+} 
+
+/*navigation menu*/
+
+.qnav .qopen > a, .qnav .qopen > a:hover, .qnav .qopen > a:focus {
+	background:none;
+}
+
+.qnavbar-default{
+	border-radius:0px;
+	background:#2574A9;
+}
+
+.qnavbar-default .qnav li a.framework-sidebar-menu-element-link{
+	color:white;
+	text-transform: uppercase;
+	font-size:14px;
+	
+}
+
+@media (min-width: 768px){
+	.qnavbar-nav{
+		margin-left:8%;
+		margin-top:6px;
+	}
+}
+
+.qnav .frameworkHeaderRightCellUserDiv .user-menu-link{
+	color:white;
+}
+
+.qnav .frameworkHeaderRightCellUserDiv{
+	border-left:none;
+}
+
+.qnav .frameworkHeaderRightCellUserDiv .user-menu-link .fa-user{
+	font-size:20px;
+	margin-right:15px;
+	border:1px solid white;
+	border-radius:100px;
+	padding:5px;
+	width:20px;
+	height:20px;
+	text-align:center;
+}
+
+.qnavbar-brand{
+	height:auto;
+}
+
+.qnavbar-right{
+	margin-top:0px;
+}
+
+.qnavbar-default .qnavbar-toggle .qicon-bar{
+	background-color:white;
+}
+
+.qnavbar-default .qnavbar-toggle:hover .qicon-bar{
+	background-color:#888;
+}
+
+.qnavbar-default .qnavbar-toggle:hover{
+	cursor: pointer;
+}
+
+/*main content*/
+
+.frameworkMainCell{
+	background: none;
+	display:block;
+	min-height:900px;
+}
+
+.bottonimain .fa-male{
+	font-size: 40px;
+	display: block;
+	text-align:center;
+}
+
+.bottonimain .fa-futbol-o{
+	font-size: 40px;
+	display: block;
+	text-align:center;
+}
+
+.bottonimain .fa-gift{
+	font-size: 40px;
+	display: block;
+	text-align:center;
+}
+
+.bottonimain .fa-money{
+	font-size: 40px;
+	display: block;
+	text-align:center;
+}
+
+.bottonimain .i{
+	text-align:center;
+}
+/*footer*/
+
+.copy{
+	font-size:12px;
+	text-align:center;
+	background:#efefef;
+	padding:25px 0px;
+	color:#949494;
+	letter-spacing: 1px;
+	border-top: 1px solid #d6d6d6;
+}
+
+.copy a{
+	color:#949494;
+	text-decoration:underline;
+	transition:color 0.5s;
+	text-transform: uppercase;
+}
+
+.copy a:hover{
+	color:#449ef1;
+}
