@@ -46,7 +46,7 @@ public class SoggettiValidator extends QborrowAbstractValidator<Soggetti> {
         int annoCompl = compleanno.get(Calendar.YEAR);
         int maggiorenne = year - annoCompl;
         if (maggiorenne < 18) {
-w            InvalidConstraint<Soggetti> ic1 =
+            InvalidConstraint<Soggetti> ic1 =
                 new InvalidConstraintImpl<Soggetti>(Soggetti.class, "error.dataCompleannoMinorenne", propertyPath + "data_compleanno", soggetti,
                     soggetti.getData_compleanno());
             errors.add(ic1);

@@ -6,7 +6,8 @@
 	<s:param name="task">checkSession</s:param>
 </s:url>
 
-  	<title><s:text name="application.title" /></title>
+  	<title>QBorrow</title>
+  	<meta name="description" content="Sistema di gestione prestiti">
   	<meta charset="utf-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   
@@ -45,6 +46,9 @@
 	<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/service/qxQborrowHttpService.js?_<jsp:include page='_version.jsp' />"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/filter/qxSysAttributeFilter.js?_<jsp:include page='_version.jsp' />"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/scripts/directive/qxDateDirective.js?_<jsp:include page='_version.jsp' />"></script>
+	
+	<!-- QBorrow stylesheet -->
+	<link  rel="stylesheet" href="<%=request.getContextPath() %>/themes/style.css?_<jsp:include page='_version.jsp' />">
 	
 	<style>
 			@font-face {
