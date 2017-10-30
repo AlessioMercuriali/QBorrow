@@ -52,6 +52,10 @@ public class SoggettiManagerAction extends SoggettiAbstractManagerAction {
      */
     private static Log log = LogFactory.getLog(SoggettiManagerAction.class);
 
+    public String Profilo() {
+        return "Profilo";
+    }
+
     public String editConDataCompleanno() {
 
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -77,4 +81,15 @@ public class SoggettiManagerAction extends SoggettiAbstractManagerAction {
             return manageException("Error on save Soggetti", e);
         }
     }
+
+    public String editProfilo() {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        try {
+            Soggetti soggetti = getQborrowManager().getSoggettiConDataCompleanno(getUserContext().getRealUser().getDn());
+            return manageSerialize(soggetti);
+        } catch (Exception e) {
+            return manageException("Error on edit Profilo", e);
+        }
+    }
+
 }

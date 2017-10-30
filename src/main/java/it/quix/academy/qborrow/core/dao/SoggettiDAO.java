@@ -110,7 +110,7 @@ public class SoggettiDAO extends SoggettiAbstractDAO {
         soggetti.setCognome(getParameterString(rs, "cognome"));
         soggetti.setImmagine(getParameterString(rs, "immagine"));
         soggetti.setData_ultima_modifica(getParameterDate(rs, "data_ultima_modifica"));
-        soggetti.setData_ultima_modifica(getParameterDate(rs, "data_compleanno"));
+        soggetti.setData_compleanno(getParameterDate(rs, "data_compleanno"));
 
         return soggetti;
     }

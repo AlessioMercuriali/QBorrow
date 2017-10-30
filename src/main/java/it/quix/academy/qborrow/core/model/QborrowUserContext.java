@@ -55,11 +55,11 @@ public class QborrowUserContext extends UserContext {
             }
 
             public String getName() {
-                return null;
+                return userId;
             }
 
             public String getDn() {
-                return null;
+                return userId;
             }
         };
         super.login(userMode1, new ArrayList<Role>());

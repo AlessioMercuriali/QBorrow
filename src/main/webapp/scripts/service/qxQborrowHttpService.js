@@ -1,6 +1,6 @@
 var qborrowApp = angular.module('qborrow');
 
-var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
+var qxQborrowHttpService = function($http, qborrowConfig, $timeout, SweetAlert) {
 	this.getOggettiList = function(scopeController, form) {
 		_getOggettiList(scopeController, form);
 	}
@@ -26,7 +26,7 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
     	
         scopeController.promise = $http({ 
         		method: 'POST', 
-        		url: qborrowConfig.baseUrl + '/oggetti.action?task=list&reset=true', 
+        		url: qborrowConfig.baseUrl + '/oggetti.action?task=list', 
         		data: quixParamSerializer(scopeController.search, 'oggettiSearch.'), 
         		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
@@ -83,7 +83,7 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         scopeController.promise = $http({ 
         		method: 'POST', 
         		url: qborrowConfig.baseUrl + '/oggetti.action?task=edit', 
-        		data: quixParamSerializer(scopeController.selectedRow, 'oggetti.'), 
+        		data: "oggetti=" + scopeController.selectedRow.id , 
         		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
         scopeController.promise.success(success).error(_manageError);
@@ -278,6 +278,33 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         });
         scopeController.promise.success(success).error(_manageError);
     }
+	
+	this.getProfiloUser = function(scopeController, form) {
+    	var success = function (data) {
+        	if((typeof data) == 'string') {
+        		// Not Managed Server error
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.error == true) {
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.errors != undefined) {
+        		qxValidationError(data, $timeout, scopeController);
+        		scopeController.result = {};
+        	} else {
+        		scopeController.result = data;
+        	}
+        };
+    	
+        scopeController.promise = $http({ 
+        		method: 'POST', 
+        		url: qborrowConfig.baseUrl + '/soggetti.action?task=editProfilo&reset=true', 
+        		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        scopeController.promise.success(success).error(_manageError);
+    }
     
     this.editSoggetti = function(scopeController){
     	var success = function (data) {
@@ -381,17 +408,20 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
     this.saveSoggettiConDataCompleanno = function(scopeController, form) {
     	var success = function (data) {
         	if((typeof data) == 'string') {
-        		// Not Managed Server error
+        		swal ( "Oops" ,  "Something went wrong!" ,  "error" );
         		_manageError(data, 0);
         		return;
         	}
         	if(data.error == true) {
+        		swal ( "Oops" ,  "Something went wrong!" ,  "error" );
         		_manageError(data, 0);
         		return;
         	}
         	if(data.errors != undefined) {
+        		swal ( "Oops" ,  "Something went wrong!" ,  "error" );
         		qxValidationError(data, form, $timeout, scopeController);
         	} else {
+        		swal ( "Success" ,  "Modifica effettuata con successo!" ,  "success" );
         		_getSoggettiList(scopeController, null);
         		scopeController.selectedPage = 'list';
         	}
@@ -399,11 +429,13 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout) {
         scopeController.promise = $http({ 
         		method: 'POST', 
         		url: qborrowConfig.baseUrl + '/soggetti.action?task=saveSoggettiConDataCompleanno&reset=true', 
-        		data: quixParamSerializer(scopeController.selectedRow, 'soggetti.'), 
+        		data: quixParamSerializer(scopeController.result, 'soggetti.'), 
         		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
         scopeController.promise.success(success).error(_manageError);
     }
+    
+
     								
 
 	this.getCombo = function(scopeController, name){

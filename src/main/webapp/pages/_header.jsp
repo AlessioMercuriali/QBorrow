@@ -15,7 +15,7 @@
 <s:url id="oggettiUrl" namespace="/" action="oggetti" escapeAmp="false" includeParams="none">
 	<s:param name="task">mainPage</s:param>
 </s:url>
-<s:url id="mieiOggetti" namespace="/" action="mieiOggetti" escapeAmp="false" includeParams="none">
+<s:url id="mieiOggetti" namespace="/" action="oggetti" escapeAmp="false" includeParams="none">
 	<s:param name="task">mieiOggetti</s:param>
 </s:url>
 <s:url id="prestitiUrl" namespace="/" action="prestiti" escapeAmp="false" includeParams="none">
@@ -27,6 +27,7 @@
 <s:url id="frmkUrl" namespace="/framework" action="admin" escapeAmp="false" includeParams="none">
 	<s:param name="version">2</s:param>
 </s:url>
+
 
 <div class="qrow">
 
@@ -95,9 +96,7 @@
 								</p></li>
 							<li class="user-footer">
 								<div class="qpull-left">
-									<a href=""
-										onclick="javascript:window.open('/puma/mydetailedit.do?dn=<s:property value="userContext.realUserDn"/>', 'detailPuma', 'width=600,height=600,statusbar=no,toolbar=no,scrollbars=no,resizable=yes')"
-										class="qbtn qbtn-default qbtn-flat"><s:text
+									<a href="soggetti.action?task=Profilo" class="qbtn qbtn-default qbtn-flat"><s:text
 											name="header.profile" /></a>
 								</div>
 								<div class="qpull-right">

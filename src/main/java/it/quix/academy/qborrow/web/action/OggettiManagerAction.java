@@ -104,6 +104,40 @@ public class OggettiManagerAction extends OggettiAbstractManagerAction {
         }
     }
 
+    public String list() throws QborrowException {
+        try {
+            // Validate the search model
+            getQborrowManager().validateOggettiSearch(oggettiSearch);
+            // Perform count of record that satisfy search filters
+            long total = getQborrowManager().countOggetti(oggettiSearch);
+            // If there are results ...
+            List<Oggetti> oggettiList = null;
+            if (total > 0) {
+                // Search the results to display
+                do {
+                    oggettiList = getQborrowManager().getOggettiList(oggettiSearch);
+                    if (oggettiList.isEmpty() && oggettiSearch.getPage() > 0) {
+                        if (log.isInfoEnabled()) {
+                            log.info("The request page " + oggettiSearch.getPage() + " was empty."
+                                + ((oggettiSearch.getPage() > 1) ? " Try with page " + (oggettiSearch.getPage() - 1) + "." : ""));
+                        }
+                        oggettiSearch.setPage(oggettiSearch.getPage() - 1);
+                    }
+                } while (0 < oggettiSearch.getPage() && oggettiList.isEmpty());
+            }
+
+            // Compose the response
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("list", oggettiList);
+            map.put("count", total);
+            return manageSerialize(map, new JSONSerializer().include("list"));
+        } catch (ValidationException e) {
+            return manageValidationError(e.getInvalidConstraints(), "list");
+        } catch (Exception e) {
+            return manageException("Error on list Oggetti", e);
+        }
+    }
+
     public OggettiSearch getOggettiSearch() {
         return oggettiSearch;
     }

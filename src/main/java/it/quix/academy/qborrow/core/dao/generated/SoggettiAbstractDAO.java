@@ -186,6 +186,72 @@ public abstract class SoggettiAbstractDAO extends AbstractJDBCDAO {
         }
     }
 
+    public void updateSoggettiConDataCompleanno(Soggetti soggetti) throws DAOStoreException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            // Compose the update query
+            StringBuilder query = new StringBuilder(EOL);
+            query.append(" UPDATE soggetti SET ").append(EOL);
+            query.append(" email = ? , ragione_sociale = ? , nome = ? , cognome = ? , immagine = ? , data_ultima_modifica = ? , data_compleanno = ?   ")
+                .append(EOL);
+            query.append("  WHERE username = ? ").append(EOL);
+
+            // Query logging
+            if (queryLog.isInfoEnabled()) {
+                queryLog.info(query);
+            }
+            // Get connection
+            connection = getConnection();
+            // Prepare the statement
+            statement = connection.prepareStatement(query.toString());
+
+            // set preUpdate
+            soggetti.preUpdate(configuration);
+
+            // Set the parameters
+            int p = 1;
+            super.setParameterString(statement, p++, soggetti.getEmail());
+            super.setParameterString(statement, p++, soggetti.getRagione_sociale());
+            super.setParameterString(statement, p++, soggetti.getNome());
+            super.setParameterString(statement, p++, soggetti.getCognome());
+            super.setParameterString(statement, p++, soggetti.getImmagine());
+            super.setParameterDateTime(statement, p++, soggetti.getData_ultima_modifica());
+            super.setParameterDateTime(statement, p++, soggetti.getData_compleanno());
+
+            // Set the primary key
+            super.setParameterString(statement, p++, soggetti.getUsername());
+
+            // Execute the query
+            long startTime = System.currentTimeMillis();
+            int numberOfUpdatedRecord = statement.executeUpdate();
+            long endTime = System.currentTimeMillis();
+            long time = endTime - startTime;
+            String msgTime = FrameworkStringUtils.concat("Query time: ", time);
+            if (queryLog.isDebugEnabled()) {
+                queryLog.debug(msgTime);
+            }
+            if (numberOfUpdatedRecord < 1) {
+                String msg =
+                    FrameworkStringUtils.concat("Error while updating the record of type Soggetti ", soggetti, " on database. Number of updated rows: ",
+                        numberOfUpdatedRecord);
+                if (log.isWarnEnabled()) {
+                    log.warn(msg);
+                }
+                throw new DAOStoreException(msg);
+            }
+        } catch (SQLException ex) {
+            String msg = FrameworkStringUtils.concat("Unexpeted error during update of record of type Soggetti ", soggetti, " on database.");
+            if (log.isErrorEnabled()) {
+                log.error(msg, ex);
+            }
+            throw new SystemException(msg, ex);
+        } finally {
+            closeStatement(statement);
+            closeConnection(connection);
+        }
+    }
+
     public void updateSoggettiConDataCompleannoAnnoPari(Soggetti soggetti) throws DAOStoreException {
         Connection connection = null;
         PreparedStatement statement = null;

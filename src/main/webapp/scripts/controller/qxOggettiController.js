@@ -94,7 +94,7 @@ qborrowApp.controller('qxOggettiController', ['$scope', 'qxQborrowHttpService', 
 		qxQborrowHttpService.getCombo($scope.scopeController, name);
 	}
 	
-	//$scope.list();
+	$scope.list();
 	
     $scope.initCalendar = function(obj, id) {
     	if ( $('#' + id)[0].type != 'date' )  {

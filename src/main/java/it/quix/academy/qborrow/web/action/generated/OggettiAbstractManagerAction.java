@@ -83,6 +83,26 @@ public class OggettiAbstractManagerAction extends QborrowManagerAction {
      */
     private Oggetti oggetti = null;
 
+    private List<Oggetti> oggettiList = new ArrayList<Oggetti>();
+
+    private String search;
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public List<Oggetti> getOggettiList() {
+        return oggettiList;
+    }
+
+    public void setOggettiList(List<Oggetti> oggettiList) {
+        this.oggettiList = oggettiList;
+    }
+
     /**
      * Method for prepare the list task called if the PrepareInterceptor is applied to the ActionConfig.
      * This method run after injection of value form Session and before injection of parameter from querystring.
@@ -149,6 +169,14 @@ public class OggettiAbstractManagerAction extends QborrowManagerAction {
         } catch (Exception e) {
             return manageException("Error on list Oggetti", e);
         }
+    }
+
+    public String listMieiOggettiStruts() {
+        oggettiSearch = new OggettiSearch();
+        oggettiSearch.setPage(0);
+        oggettiSearch.setRowPerPage(10);
+        oggettiList = getQborrowManager().getOggettiList(oggettiSearch);
+        return "listMieiOggetti";
     }
 
     /**

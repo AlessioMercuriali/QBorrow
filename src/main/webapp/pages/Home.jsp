@@ -12,12 +12,6 @@
 		<jsp:include page="_header.jsp" />
 		<div class="qcontainer">
 			<div class="qrow">
-
-				<!-- <div class="frameworkLeftMenuCell">
-					 <%-- <jsp:include page="_left.jsp">
-						<jsp:param name="menuActive" value="Home"/>
-					</jsp:include> --%>
-				</div> -->
 				<div class="frameworkMainCell">
 					<div class="qcol">
 						<div class="qpage-header">

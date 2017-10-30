@@ -7,7 +7,6 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -17,8 +16,8 @@ import it.quix.framework.core.exception.DAOFinderException;
 import it.quix.framework.core.exception.DAOStoreException;
 import it.quix.framework.core.validation.exception.ValidationException;
 import it.quix.framework.core.manager.UserContextHolder;
+import it.quix.framework.core.model.UserContext;
 import it.quix.academy.qborrow.core.model.QborrowUserContext;
-
 import it.quix.academy.qborrow.core.validation.ValidatorFactory;
 import it.quix.academy.qborrow.core.dao.DAOFactory;
 import it.quix.academy.qborrow.core.model.Oggetti;
@@ -27,7 +26,7 @@ import it.quix.academy.qborrow.core.model.Prestiti;
 import it.quix.academy.qborrow.core.search.PrestitiSearch;
 import it.quix.academy.qborrow.core.model.Soggetti;
 import it.quix.academy.qborrow.core.search.SoggettiSearch;
-
+import it.quix.academy.qborrow.web.action.QborrowManagerAction;
 import it.quix.framework.core.handler.SysAttributeHandler;
 
 /**
@@ -703,7 +702,7 @@ public class QborrowManager {
         }
         try {
 
-            daoFactory.getSoggettiDAO().updateSoggettiConDataCompleannoAnnoPari(soggetti);
+            daoFactory.getSoggettiDAO().updateSoggettiConDataCompleanno(soggetti);
 
             return soggetti;
         } catch (DAOStoreException ex) {
