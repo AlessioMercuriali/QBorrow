@@ -82,6 +82,30 @@ var qxQborrowHttpService = function($http, qborrowConfig, $timeout, SweetAlert) 
     	
         scopeController.promise = $http({ 
         		method: 'POST', 
+        		url: qborrowConfig.baseUrl + '/oggetti.action?task=getMieiOggetti', 
+        		data: "oggetti=" + scopeController.selectedRow.id , 
+        		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+        scopeController.promise.success(success).error(_manageError);
+    }
+    
+    this.editMieiOggetti = function(scopeController){
+    	var success = function (data) {
+        	if((typeof data) == 'string') {
+        		// Not Managed Server error
+        		_manageError(data, 0);
+        		return;
+        	}
+        	if(data.error == true) {
+        		_manageError(data, 0);
+        		return;
+        	}
+        	scopeController.selectedRow = data;
+        	scopeController.selectedPage = "edit";
+        };
+    	
+        scopeController.promise = $http({ 
+        		method: 'POST', 
         		url: qborrowConfig.baseUrl + '/oggetti.action?task=edit', 
         		data: "oggetti=" + scopeController.selectedRow.id , 
         		headers: {'Content-Type': 'application/x-www-form-urlencoded'}

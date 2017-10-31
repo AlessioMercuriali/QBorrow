@@ -277,6 +277,8 @@ public abstract class QborrowManagerAction extends QuixActionSupport {
         map.put("errors", list);
         return map;
     }
+    
+    
 
     /**
      * Questo metodo si occuppa di fornire la risposta di "KO" standard al client

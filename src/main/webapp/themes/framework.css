@@ -52,7 +52,7 @@ body {
 	width: 100%;  
 }
 .frameworkRow {
-	display: table-row;
+	/*display: table-row;*/
 }
 .frameworkLogoCell {
 	width: 90px;

@@ -45,7 +45,7 @@ qborrowApp.controller('qxOggettiController', ['$scope', 'qxQborrowHttpService', 
 	
 	$scope.edit = function(row){
 		$scope.scopeController.selectedRow = row;
-		qxQborrowHttpService.editOggetti($scope.scopeController);
+		qxQborrowHttpService.editMieiOggetti($scope.scopeController);
 	}
 	
 	$scope.exportXLS = function() {
@@ -82,6 +82,10 @@ qborrowApp.controller('qxOggettiController', ['$scope', 'qxQborrowHttpService', 
 	}
 	
 	$scope.save = function(row){
+		qxQborrowHttpService.save($scope.scopeController, $scope.forms.oggettiEditForm);
+	}
+	
+	$scope.saveOggettiPrestiti = function(row){
 		qxQborrowHttpService.saveOggetti($scope.scopeController, $scope.forms.oggettiEditForm);
 	}
 	

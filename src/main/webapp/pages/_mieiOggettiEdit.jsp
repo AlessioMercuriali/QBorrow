@@ -56,9 +56,7 @@
 					  	<div ng-message="qvpattern.message"><s:text name="error.qvpattern.message"/></div>
 					  	<div ng-message="string.length"><s:text name="error.string.length"/></div>
 					</div>
-				</div>
-			</div>
-			<div class="qrow">		
+				</div>	
 				<div class="qcol-md-6 qcol-sm-6 qcol-xs-12" ng-class="{'qhas-error': forms.oggettiEditForm.descrizione.$invalid}">
 					<label for="descrizione"><s:text name="oggetti.edit.descrizione"/></label>
 					<input type="text" 
@@ -106,9 +104,7 @@
 					  	<div ng-message="qvpattern.message"><s:text name="error.qvpattern.message"/></div>
 					  	<div ng-message="string.length"><s:text name="error.string.length"/></div>
 					</div>
-				</div>
-			</div>
-			<div class="qrow">		
+				</div>	
 				<div class="qcol-md-6 qcol-sm-6 qcol-xs-12" ng-class="{'qhas-error': forms.oggettiEditForm.categoria.$invalid}">
 					<label for="categoria"><s:text name="oggetti.edit.categoria"/></label>
 					<qs2:attribute2Input 
@@ -135,7 +131,9 @@
 					  	<div ng-message="qvpattern.message"><s:text name="error.qvpattern.message"/></div>
 					  	<div ng-message="string.length"><s:text name="error.string.length"/></div>
 					</div>
-				</div>		
+				</div>
+			</div>
+			<div class="qrow">		
 				<div class="qcol-md-6 qcol-sm-6 qcol-xs-12" ng-class="{'qhas-error': forms.oggettiEditForm.data_ultima_modifica.$invalid}">
 					<label for="data_ultima_modifica"><s:text name="oggetti.edit.data_ultima_modifica"/></label>
 						<div class="qdropdown">
@@ -166,9 +164,7 @@
 					  	<div ng-message="qvpattern.message"><s:text name="error.qvpattern.message"/></div>
 					  	<div ng-message="string.length"><s:text name="error.string.length"/></div>
 					</div>
-				</div>
-			</div>
-			<div class="qrow">		
+				</div>	
 				<div class="qcol-md-6 qcol-sm-6 qcol-xs-12" ng-class="{'qhas-error': forms.oggettiEditForm.soggetti.$invalid}">
 					<label for="soggetti"><s:text name="oggetti.edit.soggetti"/></label>
 					<input type="text" 
@@ -194,10 +190,10 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
-		<div class="box-footer qtext-center">
-			<button ng-click="save()" class="qbtn btn-framework-color"><i class="fa fa-floppy-o"></i>&nbsp;<s:text name="button.save"/></button>
+			<button ng-click="saveOggettiPrestiti()" class="qbtn btn-framework-color"><i class="fa fa-floppy-o"></i>&nbsp;<s:text name="button.save"/></button>
 			<button ng-click="back()" class="qbtn btn-framework-color"><i class="fa fa-arrow-circle-left"></i>&nbsp;<s:text name="button.back"/></button>
-		</div>
+		
 	</div>
 </form>

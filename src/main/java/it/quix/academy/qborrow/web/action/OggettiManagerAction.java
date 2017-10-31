@@ -61,7 +61,8 @@ public class OggettiManagerAction extends OggettiAbstractManagerAction {
     public String mieiOggetti() {
         return "mieiOggetti";
     }
-
+    
+    
     /**
      * Metodo di lista che torna solo i miei oggetti
      * This method find oggetti that satisfy search filters.
@@ -103,7 +104,7 @@ public class OggettiManagerAction extends OggettiAbstractManagerAction {
             return manageException("Error on list Oggetti", e);
         }
     }
-
+    
     public String list() throws QborrowException {
         try {
             // Validate the search model

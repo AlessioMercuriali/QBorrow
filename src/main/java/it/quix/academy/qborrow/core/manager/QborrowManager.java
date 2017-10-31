@@ -116,6 +116,13 @@ public class QborrowManager {
         oggetti = daoFactory.getOggettiDAO().get(id);
         return oggetti;
     }
+    
+    @Transactional(readOnly = true, rollbackFor = { QborrowException.class })
+    public Oggetti getMieiOggetti(Integer id) throws DAOFinderException {
+        Oggetti oggetti = null;
+        oggetti = daoFactory.getOggettiDAO().get(id);
+        return oggetti;
+    }
 
     /**
      * persist the passed Oggetti object to database, previous validation

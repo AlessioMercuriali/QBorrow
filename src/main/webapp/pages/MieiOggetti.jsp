@@ -23,16 +23,10 @@
   		<div class="qcontainer-fluid"> 
   			<jsp:include page="_header.jsp" />
 	  		<div class="frameworkRow"  >
-		  		<div class="frameworkLeftMenuCell">
-					<jsp:include page="_left.jsp">
-						<jsp:param name="menuActive" value="oggetti"/>
-					</jsp:include>
-				</div>
   				<div class="frameworkMainCell" ng-controller="qxOggettiController" ng-include="scopeController.selectedPage">
-					
+					<script type="text/ng-template" id="list"><jsp:include page="_mieiOggetti.jsp" /></script>
+  					<script type="text/ng-template" id="edit"><jsp:include page="_oggettiEdit.jsp" /></script>
   				</div>
-  				<script type="text/ng-template" id="list"><jsp:include page="_mieiOggetti.jsp" /></script>
-  				<script type="text/ng-template" id="edit"><jsp:include page="_oggettiEdit.jsp" /></script>
 			</div>
   		 	<jsp:include page="_footer.jsp" />
 	  	</div>	

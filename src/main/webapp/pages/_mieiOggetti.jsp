@@ -93,15 +93,19 @@
 					</div>
 				</div>
 				<div class="qcol-xs-12 qcol-sm-12 qcol-md-6">
-					<label for="isInPrestito"><s:text name="oggetti.search.isInPrestito" />:</label>
-					<select id="isInPrestito" name="inInPrestito" class="qform-control" ng-model="scopeController.search.isInPrestito" >
+					<label for="isInPrestito"><s:text
+							name="oggetti.search.isInPrestito" />:</label> <select id="isInPrestito"
+						name="inInPrestito" class="qform-control"
+						ng-model="scopeController.search.isInPrestito">
 						<option></option>
 						<option value="true">In prestito</option>
 						<option value="false">Non in prestito</option>
 					</select>
 				</div>
-				<div class="qcol-xs-12 qcol-sm-12 qcol-md-6" ng-class="{'qhas-error': forms.oggettiListForm.categoria.$invalid}">
-					<label for="categoria"><s:text name="oggetti.search.categoria" />:</label>
+				<div class="qcol-xs-12 qcol-sm-12 qcol-md-6"
+					ng-class="{'qhas-error': forms.oggettiListForm.categoria.$invalid}">
+					<label for="categoria"><s:text
+							name="oggetti.search.categoria" />:</label>
 					<div>
 						<qs2:attribute2Input id="categoria" cssClass="qform-control"
 							emptyOption="true" onlyActive="true" name="categoria"
@@ -229,12 +233,15 @@
 					<td>{{ row.titolo }}</td>
 					<td>{{ row.descrizione }}</td>
 					<td>{{ row.categoria | sysattribute:'QBO001_Categoria' }}</td>
-					<td ng-if="row.oggettoPrestato == true">
-						<i class="fa fa-check qtext-success" aria-hidden="true"></i></td>
-					<td ng-if="row.oggettoPrestato == false">
-						<i class="fa fa-times qtext-danger" aria-hidden="true"></i></td>
-					<td>{{ row.prestito.soggetti.nome }} {{ row.prestito.soggetti.cognome }}</td>
-					<td>{{ row.prestito.scadenza_prestito | date: "<s:text name="format.date4" />" }} </td>
+					<td ng-if="row.oggettoPrestato == true"><i
+						class="fa fa-check qtext-success" aria-hidden="true"></i></td>
+					<td ng-if="row.oggettoPrestato == false"><i
+						class="fa fa-times qtext-danger" aria-hidden="true"></i></td>
+					<td>{{ row.prestito.soggetti.nome }} {{
+						row.prestito.soggetti.cognome }}</td>
+					<td>{{ row.prestito.scadenza_prestito | date: "<s:text
+							name="format.date4" />" }}
+					</td>
 
 
 					<td class="qtext-right">
